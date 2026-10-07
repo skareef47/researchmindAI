@@ -1,0 +1,17 @@
+{
+  "name": "researchmind-frontend",
+  "version": "2.4.9",
+  "private": true,
+  "description": "ResearchMind AI - Stitch Generated Frontend Shell",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "node server.js",
+    "serve": "node server.js",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}
