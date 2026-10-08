@@ -158,10 +158,22 @@
           Buildability
         </button>
         <button
-          class="nav-item px-3 py-1 font-display font-extrabold text-xs uppercase tracking-wide border-2 border-black bg-brutalYellow shadow-[3px_3px_0px_#000000] -translate-y-0.5 active:translate-x-[1px] active:translate-y-[1px] transition-all flex items-center gap-1.5"
+          class="nav-item px-3 py-1 font-display font-bold text-xs uppercase tracking-wide border-2 border-black bg-white hover:bg-cream shadow-[2px_2px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] transition-all flex items-center gap-1.5"
+          data-tab="tab-architecture">
+          <span class="material-symbols-outlined text-sm" data-icon="schema">schema</span>
+          Architecture
+        </button>
+        <button
+          class="nav-item px-3 py-1 font-display font-bold text-xs uppercase tracking-wide border-2 border-black bg-white hover:bg-cream shadow-[2px_2px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] transition-all flex items-center gap-1.5"
           data-tab="tab-roadmap">
           <span class="material-symbols-outlined text-sm" data-icon="timeline">timeline</span>
           Implementation Matrix
+        </button>
+        <button
+          class="nav-item px-3 py-1 font-display font-bold text-xs uppercase tracking-wide border-2 border-black bg-white hover:bg-cream shadow-[2px_2px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] transition-all flex items-center gap-1.5"
+          data-tab="tab-gaps">
+          <span class="material-symbols-outlined text-sm" data-icon="travel_explore">travel_explore</span>
+          Research Gaps
         </button>
       </nav>
     </div>
@@ -241,7 +253,7 @@
           <div
             class="px-1 text-[11px] font-mono font-bold text-black uppercase tracking-wider flex items-center justify-between">
             <span>PIPELINE MODULES</span>
-            <span class="text-[10px] bg-black text-brutalYellow px-1">5</span>
+            <span class="text-[10px] bg-black text-brutalYellow px-1">7</span>
           </div>
           <button
             class="rail-btn flex items-center justify-between px-3 py-2 bg-white border-2 border-black text-left font-display font-bold text-xs uppercase shadow-[2px_2px_0px_#000000] hover:bg-cream active:translate-x-[1px] active:translate-y-[1px] transition-all"
@@ -282,13 +294,32 @@
             <span class="text-[10px] font-mono bg-brutalLime px-1 border border-black font-bold">READY</span>
           </button>
           <button
-            class="rail-btn flex items-center justify-between px-3 py-2 bg-brutalYellow border-2 border-black text-left font-display font-extrabold text-xs uppercase shadow-[3px_3px_0px_#000000] -translate-y-0.5 transition-all"
+            class="rail-btn flex items-center justify-between px-3 py-2 bg-white border-2 border-black text-left font-display font-bold text-xs uppercase shadow-[2px_2px_0px_#000000] hover:bg-cream active:translate-x-[1px] active:translate-y-[1px] transition-all"
+            data-target="tab-architecture" onclick="switchTab('tab-architecture')">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-base" data-icon="schema">schema</span>
+              <span>Architecture</span>
+            </span>
+            <span class="text-[10px] font-mono bg-brutalYellow px-1 border border-black font-bold"
+              id="rail-arch-badge">0 SEL</span>
+          </button>
+          <button
+            class="rail-btn flex items-center justify-between px-3 py-2 bg-white border-2 border-black text-left font-display font-bold text-xs uppercase shadow-[2px_2px_0px_#000000] hover:bg-cream active:translate-x-[1px] active:translate-y-[1px] transition-all"
             data-target="tab-roadmap" onclick="switchTab('tab-roadmap')">
             <span class="flex items-center gap-2">
               <span class="material-symbols-outlined text-base" data-icon="timeline">timeline</span>
               <span>Roadmap Matrix</span>
             </span>
-            <span class="text-[10px] font-mono bg-black text-white px-1.5 border border-black font-bold">14%</span>
+            <span class="text-[10px] font-mono bg-black text-white px-1.5 border border-black font-bold">ROADMAP</span>
+          </button>
+          <button
+            class="rail-btn flex items-center justify-between px-3 py-2 bg-white border-2 border-black text-left font-display font-bold text-xs uppercase shadow-[2px_2px_0px_#000000] hover:bg-cream active:translate-x-[1px] active:translate-y-[1px] transition-all"
+            data-target="tab-gaps" onclick="switchTab('tab-gaps')">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-base" data-icon="travel_explore">travel_explore</span>
+              <span>Research Gaps</span>
+            </span>
+            <span class="text-[10px] font-mono bg-brutalCyan px-1.5 border border-black font-bold" id="rail-gaps-badge">GAPS</span>
           </button>
         </div>
         <!-- New Pipeline CTA Button -->
@@ -358,322 +389,127 @@
         <!-- Matrix Header Neo-Brutalist Banner -->
         <div
           class="bg-white border-[2.5px] border-black p-5 md:p-6 shadow-[5px_5px_0px_#000000] flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-          <div class="flex flex-col gap-1.5">
+          <div class="flex flex-col gap-1.5 flex-1">
             <div class="flex flex-wrap items-center gap-2">
               <span
-                class="px-2.5 py-0.5 bg-brutalYellow border-2 border-black font-mono font-bold text-xs uppercase shadow-[2px_2px_0px_#000000] rotate-[-1deg]">
-                DETERMINISTIC PIPELINE
+                class="px-2.5 py-0.5 bg-black text-white font-mono font-bold text-xs uppercase">
+                ACTIONABLE IMPLEMENTATION ROADMAP
               </span>
               <span
-                class="px-2.5 py-0.5 bg-brutalCyan border-2 border-black font-mono font-bold text-xs uppercase shadow-[2px_2px_0px_#000000] rotate-[1deg]">
-                COMPUTE GRAPH: VERIFIED
+                class="px-2.5 py-0.5 bg-brutalLime border border-black font-mono font-bold text-xs uppercase" id="roadmap-grounding-badge">
+                EVIDENCE-GROUNDED
               </span>
-              <span class="px-2 py-0.5 bg-white border-2 border-black font-mono font-bold text-xs uppercase"
-                id="roadmap-model-badge">
-                OPTIMIZER: MILP (HIGHS)
+              <span class="px-2.5 py-0.5 bg-brutalYellow border border-black font-mono font-bold text-xs uppercase"
+                id="roadmap-papers-count-badge">
+                0 PAPERS SELECTED
+              </span>
+              <span class="px-2.5 py-0.5 bg-brutalCyan border border-black font-mono font-bold text-xs uppercase"
+                id="roadmap-duration-badge">
+                2-3 WEEKS
+              </span>
+              <span class="px-2.5 py-0.5 bg-[#FAF8EE] border border-black font-mono font-bold text-xs uppercase"
+                id="roadmap-arch-hash-badge" title="Deterministic Architecture Fingerprint">
+                HASH: LIVE
               </span>
             </div>
             <h1
-              class="font-display font-extrabold text-2xl md:text-3xl lg:text-4xl uppercase tracking-tight text-black mt-1">
-              7-PHASE IMPLEMENTATION ROADMAP MATRIX
+              class="font-display font-extrabold text-2xl md:text-3xl uppercase tracking-tight text-black mt-1" id="roadmap-view-title">
+              8-Phase Implementation Roadmap Matrix
             </h1>
-            <p class="font-body text-sm text-neutral-800 max-w-3xl font-medium">
-              Rigorous blueprint mapping academic derivation through kernel compilation, distributed benchmarking, and
-              production inference microservices.
+            <p class="font-body text-xs md:text-sm text-neutral-800 max-w-3xl font-medium" id="roadmap-view-subtitle">
+              Synthesizes research methods, verified datasets, model architectures, hardware specs, and user constraints into an actionable, sequential engineering execution blueprint.
             </p>
           </div>
           <!-- Progress Widget Neo-Brutalist Block -->
           <div
-            class="bg-[#FAF8EE] border-2 border-black p-4 shadow-[3px_3px_0px_#000000] flex flex-col gap-2 min-w-[260px]">
+            class="bg-[#FAF8EE] border-2 border-black p-4 shadow-[3px_3px_0px_#000000] flex flex-col gap-2 min-w-[280px]">
             <div class="flex items-center justify-between font-mono font-bold text-xs">
-              <span class="uppercase">SYNTHESIS PROGRESS</span>
-              <span class="px-1.5 bg-black text-brutalYellow">1/7 PHASES (14%)</span>
+              <span class="uppercase">ROADMAP PROGRESS</span>
+              <span class="px-1.5 py-0.5 bg-black text-brutalYellow font-mono font-extrabold text-xs" id="roadmap-progress-label">0/8 PHASES (0%)</span>
             </div>
             <!-- Segmented Brutalist Progress Bar -->
-            <div class="grid grid-cols-7 gap-1 h-4 bg-white border-2 border-black p-0.5">
-              <div class="bg-brutalLime border border-black h-full"></div>
-              <div class="bg-neutral-200 border border-black/30 h-full"></div>
-              <div class="bg-neutral-200 border border-black/30 h-full"></div>
-              <div class="bg-neutral-200 border border-black/30 h-full"></div>
-              <div class="bg-neutral-200 border border-black/30 h-full"></div>
-              <div class="bg-neutral-200 border border-black/30 h-full"></div>
-              <div class="bg-neutral-200 border border-black/30 h-full"></div>
+            <div class="grid grid-cols-8 gap-1 h-4 bg-white border-2 border-black p-0.5" id="roadmap-progress-segments">
+              <div class="bg-neutral-200 border border-black/30 h-full" id="rm-prog-seg-1"></div>
+              <div class="bg-neutral-200 border border-black/30 h-full" id="rm-prog-seg-2"></div>
+              <div class="bg-neutral-200 border border-black/30 h-full" id="rm-prog-seg-3"></div>
+              <div class="bg-neutral-200 border border-black/30 h-full" id="rm-prog-seg-4"></div>
+              <div class="bg-neutral-200 border border-black/30 h-full" id="rm-prog-seg-5"></div>
+              <div class="bg-neutral-200 border border-black/30 h-full" id="rm-prog-seg-6"></div>
+              <div class="bg-neutral-200 border border-black/30 h-full" id="rm-prog-seg-7"></div>
+              <div class="bg-neutral-200 border border-black/30 h-full" id="rm-prog-seg-8"></div>
             </div>
             <div class="flex items-center justify-between text-[10px] font-mono text-neutral-600 font-bold">
-              <span>START: INGEST</span>
-              <span>END: CLUSTER DEPLOY</span>
+              <span>PHASE 1: INGESTION</span>
+              <span>PHASE 8: DEPLOY</span>
             </div>
           </div>
         </div>
-        <!-- 7-Phase Linear Grid Cards (Neo-Brutalist Layout) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-4">
-          <!-- Phase 1 -->
-          <div
-            class="brutal-card p-4 flex flex-col justify-between border-t-[6px] border-t-brutalLime min-h-[360px] bg-white">
-            <div class="flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span
-                  class="px-2 py-0.5 bg-brutalLime border-2 border-black font-mono font-bold text-xs shadow-[1.5px_1.5px_0px_#000000]">
-                  PHASE 01
-                </span>
-                <span class="w-3 h-3 bg-brutalLime border-2 border-black rounded-none"></span>
-              </div>
-              <h3 class="font-display font-extrabold text-base uppercase tracking-tight text-black mt-1">
-                Dataset &amp; Ingestion
-              </h3>
-              <p class="font-body text-xs text-neutral-800 leading-relaxed">
-                Tokenized shard pipeline, causal sequence masking, and HuggingFace / LRA validation train/test splits.
-              </p>
-              <div class="flex flex-wrap gap-1 mt-1">
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">TOKENIZER</span>
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">LRA BENCH</span>
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">64K TOK</span>
-              </div>
-            </div>
-            <div class="flex flex-col gap-2 pt-3 border-t-2 border-black mt-3">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-neutral-600">STATUS:</span>
-                <span class="text-[10px] font-mono font-bold bg-black text-brutalLime px-1.5 py-0.2">COMPILED</span>
-              </div>
-              <button
-                class="brutal-btn w-full py-1.5 bg-brutalYellow font-display font-bold text-xs uppercase tracking-wider hover:bg-black hover:text-white"
-                onclick="openPaperDetailsModal()">
-                VIEW SPECS
-              </button>
+
+        <!-- Selected Papers & Constraints Control Strip -->
+        <div class="p-3 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-wrap items-center justify-between gap-3" id="roadmap-controls-bar">
+          <div class="flex flex-wrap items-center gap-2 flex-1">
+            <span class="text-[10px] font-mono font-extrabold uppercase bg-black text-white px-1.5 py-0.5">GROUNDING PAPERS:</span>
+            <div class="flex flex-wrap items-center gap-1.5" id="roadmap-selected-papers-list">
+              <span class="font-mono text-xs text-neutral-500 italic">No specific papers selected; using active feed candidates.</span>
             </div>
           </div>
-          <!-- Phase 2 -->
-          <div
-            class="brutal-card p-4 flex flex-col justify-between border-t-[6px] border-t-brutalYellow min-h-[360px] bg-white">
-            <div class="flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span
-                  class="px-2 py-0.5 bg-brutalYellow border-2 border-black font-mono font-bold text-xs shadow-[1.5px_1.5px_0px_#000000]">
-                  PHASE 02
-                </span>
-                <span class="w-3 h-3 bg-white border-2 border-black"></span>
-              </div>
-              <h3 class="font-display font-extrabold text-base uppercase tracking-tight text-black mt-1">
-                Baseline Model
-              </h3>
-              <p class="font-body text-xs text-neutral-800 leading-relaxed">
-                Standard dot-product naive attention verification, parameter footprint analysis, and arithmetic
-                intensity.
-              </p>
-              <div class="flex flex-wrap gap-1 mt-1">
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">O(N^2) REF</span>
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">LLaMA 7B</span>
-              </div>
-            </div>
-            <div class="flex flex-col gap-2 pt-3 border-t-2 border-black mt-3">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-neutral-600">STATUS:</span>
-                <span class="text-[10px] font-mono font-bold bg-white border border-black px-1 text-black">READY</span>
-              </div>
-              <button
-                class="brutal-btn w-full py-1.5 bg-white font-display font-bold text-xs uppercase tracking-wider hover:bg-brutalYellow"
-                onclick="openPaperDetailsModal()">
-                VIEW SPECS
-              </button>
-            </div>
-          </div>
-          <!-- Phase 3 -->
-          <div
-            class="brutal-card p-4 flex flex-col justify-between border-t-[6px] border-t-brutalCyan min-h-[360px] bg-white">
-            <div class="flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span
-                  class="px-2 py-0.5 bg-brutalCyan border-2 border-black font-mono font-bold text-xs shadow-[1.5px_1.5px_0px_#000000]">
-                  PHASE 03
-                </span>
-                <span class="w-3 h-3 bg-white border-2 border-black"></span>
-              </div>
-              <h3 class="font-display font-extrabold text-base uppercase tracking-tight text-black mt-1">
-                Kernel Training
-              </h3>
-              <p class="font-body text-xs text-neutral-800 leading-relaxed">
-                Triton / CUDA warp-level matrix multiplications, online softmax recomputation, and FP16/BF16 tensor
-                cores.
-              </p>
-              <div class="flex flex-wrap gap-1 mt-1">
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">CUDA C++</span>
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">TRITON</span>
-              </div>
-            </div>
-            <div class="flex flex-col gap-2 pt-3 border-t-2 border-black mt-3">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-neutral-600">STATUS:</span>
-                <span
-                  class="text-[10px] font-mono font-bold bg-white border border-black px-1 text-neutral-500">QUEUED</span>
-              </div>
-              <button
-                class="brutal-btn w-full py-1.5 bg-white font-display font-bold text-xs uppercase tracking-wider hover:bg-brutalCyan"
-                onclick="openPaperDetailsModal()">
-                VIEW SPECS
-              </button>
-            </div>
-          </div>
-          <!-- Phase 4 -->
-          <div
-            class="brutal-card p-4 flex flex-col justify-between border-t-[6px] border-t-brutalPink min-h-[360px] bg-white">
-            <div class="flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span
-                  class="px-2 py-0.5 bg-brutalPink border-2 border-black font-mono font-bold text-xs shadow-[1.5px_1.5px_0px_#000000]">
-                  PHASE 04
-                </span>
-                <span class="w-3 h-3 bg-white border-2 border-black"></span>
-              </div>
-              <h3 class="font-display font-extrabold text-base uppercase tracking-tight text-black mt-1">
-                Empirical Eval
-              </h3>
-              <p class="font-body text-xs text-neutral-800 leading-relaxed">
-                FLOPs utilization benchmarking, A100 vs H100 scaling parity, gradient divergence tests, and numerical
-                checks.
-              </p>
-              <div class="flex flex-wrap gap-1 mt-1">
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">TFLOPS/S</span>
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">NUMERICAL</span>
-              </div>
-            </div>
-            <div class="flex flex-col gap-2 pt-3 border-t-2 border-black mt-3">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-neutral-600">STATUS:</span>
-                <span
-                  class="text-[10px] font-mono font-bold bg-white border border-black px-1 text-neutral-500">QUEUED</span>
-              </div>
-              <button
-                class="brutal-btn w-full py-1.5 bg-white font-display font-bold text-xs uppercase tracking-wider hover:bg-brutalPink"
-                onclick="openPaperDetailsModal()">
-                VIEW SPECS
-              </button>
-            </div>
-          </div>
-          <!-- Phase 5 -->
-          <div
-            class="brutal-card p-4 flex flex-col justify-between border-t-[6px] border-t-brutalPurple min-h-[360px] bg-white">
-            <div class="flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span
-                  class="px-2 py-0.5 bg-brutalPurple border-2 border-black font-mono font-bold text-xs shadow-[1.5px_1.5px_0px_#000000]">
-                  PHASE 05
-                </span>
-                <span class="w-3 h-3 bg-white border-2 border-black"></span>
-              </div>
-              <h3 class="font-display font-extrabold text-base uppercase tracking-tight text-black mt-1">
-                Backend Runtime
-              </h3>
-              <p class="font-body text-xs text-neutral-800 leading-relaxed">
-                TensorRT / ONNX runtime bindings, asynchronous gRPC microservice wrapper, and continuous batching ring.
-              </p>
-              <div class="flex flex-wrap gap-1 mt-1">
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">TENSOR-RT</span>
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">gRPC</span>
-              </div>
-            </div>
-            <div class="flex flex-col gap-2 pt-3 border-t-2 border-black mt-3">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-neutral-600">STATUS:</span>
-                <span
-                  class="text-[10px] font-mono font-bold bg-white border border-black px-1 text-neutral-500">QUEUED</span>
-              </div>
-              <button
-                class="brutal-btn w-full py-1.5 bg-white font-display font-bold text-xs uppercase tracking-wider hover:bg-brutalPurple"
-                onclick="openPaperDetailsModal()">
-                VIEW SPECS
-              </button>
-            </div>
-          </div>
-          <!-- Phase 6 -->
-          <div
-            class="brutal-card p-4 flex flex-col justify-between border-t-[6px] border-t-brutalBlue min-h-[360px] bg-white">
-            <div class="flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span
-                  class="px-2 py-0.5 bg-brutalBlue border-2 border-black font-mono font-bold text-xs shadow-[1.5px_1.5px_0px_#000000]">
-                  PHASE 06
-                </span>
-                <span class="w-3 h-3 bg-white border-2 border-black"></span>
-              </div>
-              <h3 class="font-display font-extrabold text-base uppercase tracking-tight text-black mt-1">
-                Telemetry Wire
-              </h3>
-              <p class="font-body text-xs text-neutral-800 leading-relaxed">
-                Real-time latency histograms, token-throughput streaming over WebSockets, and attention heatmap
-                visualizers.
-              </p>
-              <div class="flex flex-wrap gap-1 mt-1">
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">STREAM</span>
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">WS-RPC</span>
-              </div>
-            </div>
-            <div class="flex flex-col gap-2 pt-3 border-t-2 border-black mt-3">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-neutral-600">STATUS:</span>
-                <span
-                  class="text-[10px] font-mono font-bold bg-white border border-black px-1 text-neutral-500">QUEUED</span>
-              </div>
-              <button
-                class="brutal-btn w-full py-1.5 bg-white font-display font-bold text-xs uppercase tracking-wider hover:bg-brutalBlue"
-                onclick="openPaperDetailsModal()">
-                VIEW SPECS
-              </button>
-            </div>
-          </div>
-          <!-- Phase 7 -->
-          <div
-            class="brutal-card p-4 flex flex-col justify-between border-t-[6px] border-t-brutalCoral min-h-[360px] bg-white">
-            <div class="flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span
-                  class="px-2 py-0.5 bg-brutalCoral border-2 border-black font-mono font-bold text-xs shadow-[1.5px_1.5px_0px_#000000]">
-                  PHASE 07
-                </span>
-                <span class="w-3 h-3 bg-white border-2 border-black"></span>
-              </div>
-              <h3 class="font-display font-extrabold text-base uppercase tracking-tight text-black mt-1">
-                Cluster Deploy
-              </h3>
-              <p class="font-body text-xs text-neutral-800 leading-relaxed">
-                Multi-node Kubernetes GPU operator provisioner, autoscaling inference pools, and fallback endpoints.
-              </p>
-              <div class="flex flex-wrap gap-1 mt-1">
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">K8S GPU</span>
-                <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1">AUTOSCALE</span>
-              </div>
-            </div>
-            <div class="flex flex-col gap-2 pt-3 border-t-2 border-black mt-3">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-neutral-600">STATUS:</span>
-                <span
-                  class="text-[10px] font-mono font-bold bg-white border border-black px-1 text-neutral-500">QUEUED</span>
-              </div>
-              <button
-                class="brutal-btn w-full py-1.5 bg-white font-display font-bold text-xs uppercase tracking-wider hover:bg-brutalCoral"
-                onclick="openPaperDetailsModal()">
-                VIEW SPECS
-              </button>
-            </div>
+          <!-- Constraint Toggles -->
+          <div class="flex flex-wrap items-center gap-2">
+            <button class="px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-white hover:bg-cream text-black shadow-[1.5px_1.5px_0px_#000000] transition-all" id="btn-rm-const-gpu" onclick="toggleRoadmapConstraint('limited_gpu')">
+              GPU &lt;= 8GB
+            </button>
+            <button class="px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-white hover:bg-cream text-black shadow-[1.5px_1.5px_0px_#000000] transition-all" id="btn-rm-const-time" onclick="toggleRoadmapConstraint('limited_time')">
+              FAST-TRACK (&lt;1 WK)
+            </button>
+            <button class="px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-white hover:bg-cream text-black shadow-[1.5px_1.5px_0px_#000000] transition-all" id="btn-rm-const-public" onclick="toggleRoadmapConstraint('public_datasets_only')">
+              PUBLIC DATA ONLY
+            </button>
+            <button class="px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-white hover:bg-cream text-black shadow-[1.5px_1.5px_0px_#000000] transition-all" id="btn-rm-const-oss" onclick="toggleRoadmapConstraint('open_source_only')">
+              OPEN SOURCE ONLY
+            </button>
+            <button class="brutal-btn px-4 py-1.5 bg-brutalYellow font-display font-extrabold text-xs uppercase flex items-center gap-1.5 ml-1" onclick="reSynthesizeRoadmap()">
+              <span class="material-symbols-outlined text-sm font-bold" data-icon="sync">sync</span>
+              <span>SYNTHESIZE ROADMAP</span>
+            </button>
           </div>
         </div>
+
+        <!-- 8-Phase Dynamic Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="roadmap-phases-grid">
+          <div class="p-8 text-center text-xs font-mono text-neutral-500 bg-[#FAF8EE] border border-black col-span-full">
+            Loading research-grounded implementation roadmap...
+          </div>
+        </div>
+
+        <!-- Directed Dependency Flow Pipeline Banner -->
+        <div class="brutal-card p-4 bg-white flex flex-col gap-2.5" id="roadmap-dependency-flow-container">
+          <div class="flex items-center justify-between pb-2 border-b border-black">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-base font-bold" data-icon="route">route</span>
+              <h3 class="font-display font-extrabold text-xs uppercase tracking-wider">PHASE TRANSITION &amp; PREREQUISITE DEPENDENCIES</h3>
+            </div>
+            <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1.5 py-0.5" id="roadmap-transitions-count-badge">9 TRANSITIONS</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 text-xs font-mono font-bold" id="roadmap-dependency-flow-badges">
+            <!-- Rendered by renderRoadmap -->
+          </div>
+        </div>
+
         <!-- Quick Action Brutalist Strip -->
-        <div
-          class="bg-white border-2 border-black p-4 shadow-[4px_4px_0px_#000000] flex flex-wrap items-center justify-between gap-3">
+        <div class="bg-white border-2 border-black p-4 shadow-[4px_4px_0px_#000000] flex flex-wrap items-center justify-between gap-3">
           <div class="flex items-center gap-2">
             <span class="font-mono font-bold text-xs uppercase bg-black text-white px-2 py-0.5">PIPELINE STATUS</span>
-            <span class="font-body text-xs text-neutral-800 font-semibold" id="pipeline-status-text">FastAPI Backend
-              v1.0.0 • Connected to Scholarly Retrieval Engine</span>
+            <span class="font-body text-xs text-neutral-800 font-semibold" id="pipeline-status-text">
+              FastAPI Engine v2.4.9 • Evidence-Grounded Implementation Roadmap Online
+            </span>
           </div>
           <div class="flex items-center gap-2">
-            <button
-              class="brutal-btn px-3 py-1.5 bg-[#FAF8EE] font-mono text-xs uppercase font-bold hover:bg-brutalCyan"
-              onclick="openRankingModal()">
-              EXPLAIN SCORING
+            <button class="brutal-btn px-3 py-1.5 bg-brutalYellow font-display font-extrabold text-xs uppercase flex items-center gap-1 hover:bg-black hover:text-white" onclick="switchTab('tab-architecture')">
+              <span class="material-symbols-outlined text-sm font-bold" data-icon="schema">schema</span>
+              <span>VIEW ARCHITECTURE</span>
             </button>
-            <button
-              class="brutal-btn px-4 py-1.5 bg-brutalLime font-display text-xs uppercase font-extrabold hover:bg-black hover:text-white"
-              onclick="openPaperDetailsModal()">
-              INSPECT DETAILED MANUSCRIPT
+            <button class="brutal-btn px-4 py-1.5 bg-brutalLime font-display text-xs uppercase font-extrabold hover:bg-black hover:text-white" onclick="switchTab('tab-research')">
+              RETURN TO SEARCH
             </button>
           </div>
         </div>
@@ -818,88 +654,98 @@
       <!-- ========================================== -->
       <!-- VIEW 3: KNOWLEDGE GRAPH VIEW               -->
       <!-- ========================================== -->
+      <!-- ========================================== -->
+      <!-- VIEW 3: KNOWLEDGE GRAPH VIEW               -->
+      <!-- ========================================== -->
       <section class="view-panel flex-col gap-4 hidden" id="tab-knowledge">
         <div
           class="bg-white border-2 border-black p-4 shadow-[4px_4px_0px_#000000] flex flex-wrap items-center justify-between gap-3">
           <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="px-2 py-0.5 bg-black text-white font-mono font-bold text-xs uppercase">TOPOLOGY VISUALIZER</span>
+              <span class="px-2 py-0.5 bg-brutalYellow border border-black font-mono font-bold text-xs" id="kg-node-count-badge">0 NODES</span>
+              <span class="px-2 py-0.5 bg-brutalLime border border-black font-mono font-bold text-xs" id="kg-edge-count-badge">0 EDGES</span>
+            </div>
             <h2 class="font-display font-extrabold text-xl uppercase tracking-tight text-black">
               Cross-Entity Knowledge Graph
             </h2>
-            <p class="font-body text-xs text-neutral-700">Relational topology connecting papers, methods, tokenizers,
-              and citation DAGs.</p>
+            <p class="font-body text-xs text-neutral-700">Evidence-grounded scholarly topology extracted from live retrieved papers.</p>
           </div>
-          <div class="flex items-center gap-2">
-            <span class="px-2 py-0.5 bg-white border border-black text-xs font-mono font-bold">PAPERS</span>
-            <span class="px-2 py-0.5 bg-brutalYellow border border-black text-xs font-mono font-bold">KERNELS</span>
-            <span class="px-2 py-0.5 bg-brutalCyan border border-black text-xs font-mono font-bold">MODELS</span>
-            <span class="px-2 py-0.5 bg-brutalLime border border-black text-xs font-mono font-bold">DATASETS</span>
+          <!-- Type Filter Legend -->
+          <div class="flex items-center flex-wrap gap-1.5" id="kg-filter-legend">
+            <button class="kg-filter-btn px-2 py-0.5 bg-black text-white border border-black text-xs font-mono font-bold transition-all" data-type="all" onclick="filterGraphType('all')">ALL</button>
+            <button class="kg-filter-btn px-2 py-0.5 bg-white text-black border border-black text-xs font-mono font-bold hover:bg-cream transition-all" data-type="paper" onclick="filterGraphType('paper')">PAPERS</button>
+            <button class="kg-filter-btn px-2 py-0.5 bg-white text-black border border-black text-xs font-mono font-bold hover:bg-cream transition-all" data-type="author" onclick="filterGraphType('author')">AUTHORS</button>
+            <button class="kg-filter-btn px-2 py-0.5 bg-white text-black border border-black text-xs font-mono font-bold hover:bg-cream transition-all" data-type="model" onclick="filterGraphType('model')">MODELS</button>
+            <button class="kg-filter-btn px-2 py-0.5 bg-white text-black border border-black text-xs font-mono font-bold hover:bg-cream transition-all" data-type="dataset" onclick="filterGraphType('dataset')">DATASETS</button>
+            <button class="kg-filter-btn px-2 py-0.5 bg-white text-black border border-black text-xs font-mono font-bold hover:bg-cream transition-all" data-type="method" onclick="filterGraphType('method')">METHODS</button>
+            <button class="kg-filter-btn px-2 py-0.5 bg-white text-black border border-black text-xs font-mono font-bold hover:bg-cream transition-all" data-type="task" onclick="filterGraphType('task')">TASKS</button>
+            <button class="kg-filter-btn px-2 py-0.5 bg-white text-black border border-black text-xs font-mono font-bold hover:bg-cream transition-all" data-type="venue" onclick="filterGraphType('venue')">VENUES</button>
           </div>
         </div>
-        <!-- Graph Stage Canvas Box -->
-        <div
-          class="relative bg-white border-[2.5px] border-black h-[500px] flex items-center justify-center overflow-hidden shadow-[5px_5px_0px_#000000]">
-          <div
-            class="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:40px_40px] opacity-10 pointer-events-none">
+
+        <!-- Graph Main Stage + Inspector Split -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+          <!-- Graph Stage Canvas Box (8 cols) -->
+          <div class="lg:col-span-8 relative bg-white border-[2.5px] border-black min-h-[580px] h-[580px] overflow-hidden shadow-[5px_5px_0px_#000000] flex flex-col justify-between">
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:30px_30px] opacity-10 pointer-events-none"></div>
+
+            <!-- Canvas Controls -->
+            <div class="absolute top-3 right-3 flex items-center gap-1.5 z-20">
+              <button class="w-8 h-8 bg-white border-2 border-black shadow-[2px_2px_0px_#000000] flex items-center justify-center font-bold hover:bg-brutalYellow text-sm" onclick="zoomGraph(1.15)" title="Zoom in">+</button>
+              <button class="w-8 h-8 bg-white border-2 border-black shadow-[2px_2px_0px_#000000] flex items-center justify-center font-bold hover:bg-brutalYellow text-sm" onclick="zoomGraph(0.85)" title="Zoom out">-</button>
+              <button class="px-2.5 py-1 bg-white border-2 border-black shadow-[2px_2px_0px_#000000] font-mono font-bold text-xs uppercase hover:bg-brutalLime" onclick="resetGraphZoom()">RESET</button>
+            </div>
+
+            <!-- Graph Viewport & Canvas Layer -->
+            <div class="relative w-full h-full overflow-auto custom-scrollbar flex items-center justify-center" id="graph-viewport">
+              <div class="relative w-[1100px] h-[700px] transition-transform duration-200 origin-center" id="graph-container">
+                <svg id="kg-svg-edges" class="absolute inset-0 w-full h-full pointer-events-none">
+                  <defs>
+                    <marker id="kg-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                      <path d="M 0 1 L 10 5 L 0 9 z" fill="#000000" />
+                    </marker>
+                    <marker id="kg-arrow-active" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                      <path d="M 0 1 L 10 5 L 0 9 z" fill="#EF4444" />
+                    </marker>
+                  </defs>
+                </svg>
+                <div id="kg-nodes-layer" class="absolute inset-0 w-full h-full"></div>
+              </div>
+            </div>
+
+            <!-- Bottom status bar -->
+            <div class="relative z-10 bg-white border-t-2 border-black p-2.5 flex items-center justify-between text-xs font-mono font-bold">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 bg-brutalLime border border-black animate-pulse"></span>
+                <span id="graph-vertex-status">READY • CLICK ANY NODE TO INSPECT RELATIONSHIPS</span>
+              </div>
+              <span id="graph-active-query-label" class="bg-brutalYellow px-2 py-0.5 border border-black uppercase truncate max-w-[250px]">QUERY SEED</span>
+            </div>
           </div>
-          <div class="absolute top-4 right-4 flex items-center gap-1.5 z-10">
-            <button
-              class="w-8 h-8 bg-white border-2 border-black shadow-[2px_2px_0px_#000000] flex items-center justify-center font-bold hover:bg-brutalYellow">+</button>
-            <button
-              class="w-8 h-8 bg-white border-2 border-black shadow-[2px_2px_0px_#000000] flex items-center justify-center font-bold hover:bg-brutalYellow">-</button>
-            <button
-              class="px-2 py-1 bg-white border-2 border-black shadow-[2px_2px_0px_#000000] font-mono font-bold text-xs uppercase hover:bg-brutalLime">RESET</button>
-          </div>
-          <div class="relative w-full h-full flex items-center justify-center" id="graph-stage-elements">
-            <!-- Center Node -->
-            <div
-              class="relative z-10 p-3 bg-brutalYellow border-[2.5px] border-black shadow-[4px_4px_0px_#000000] flex flex-col items-center rotate-[-1deg] max-w-xs text-center">
-              <span class="text-[10px] font-mono font-bold uppercase bg-black text-white px-1">ACTIVE QUERY SEED</span>
-              <div class="font-display font-extrabold text-sm uppercase mt-1 truncate max-w-[220px]"
-                id="graph-core-title">Growth Hormone Deficiency</div>
-              <span class="text-[10px] font-mono font-bold" id="graph-core-sub">ResearchMind Topology</span>
+
+          <!-- Entity & Relationship Inspector Panel (4 cols) -->
+          <div class="lg:col-span-4 brutal-card p-4 bg-white flex flex-col justify-between min-h-[580px] h-[580px] overflow-hidden" id="kg-inspector-card">
+            <div class="flex flex-col h-full overflow-hidden">
+              <div class="border-b-2 border-black pb-3 mb-3 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-mono font-bold uppercase bg-black text-white px-1.5 py-0.5">INSPECTOR</span>
+                  <h3 class="font-display font-extrabold text-base uppercase mt-1 truncate max-w-[220px]" id="kg-inspector-title">Select Entity</h3>
+                </div>
+                <span class="px-2 py-0.5 bg-cream border border-black text-[10px] font-mono font-bold uppercase" id="kg-inspector-type">TOPOLOGY</span>
+              </div>
+              <div class="flex-1 overflow-y-auto custom-scrollbar pr-1" id="kg-inspector-body">
+                <div class="p-6 text-center text-neutral-500 font-mono text-xs flex flex-col items-center justify-center h-full">
+                  <span class="material-symbols-outlined text-4xl mb-2 text-neutral-400">hub</span>
+                  <p class="font-bold text-black uppercase mb-1">Interactive Topology</p>
+                  <p>Click any Paper, Author, Model, Dataset, Method, Task, or Venue node on the canvas to inspect its verified relationships and extraction evidence.</p>
+                </div>
+              </div>
             </div>
-            <!-- Node Left -->
-            <div
-              class="absolute left-1/4 top-1/3 p-2.5 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col rotate-[2deg]">
-              <span class="text-[9px] font-mono font-bold bg-brutalCyan px-1 border border-black">SCHOLARLY
-                ADAPTER</span>
-              <span class="font-display font-bold text-xs mt-0.5">Semantic Scholar</span>
-              <span class="text-[9px] font-mono text-neutral-600">Phase 2 Source</span>
+            <div class="border-t-2 border-black pt-2.5 mt-2 flex items-center justify-between">
+              <button class="brutal-btn px-3 py-1 bg-brutalYellow font-mono font-bold text-xs uppercase" onclick="switchTab('tab-research')">VIEW FEED</button>
+              <button class="brutal-btn px-3 py-1 bg-white font-mono font-bold text-xs uppercase hover:bg-cream" onclick="resetGraphZoom()">CENTER VIEW</button>
             </div>
-            <!-- Node Right -->
-            <div
-              class="absolute right-1/4 bottom-1/3 p-2.5 bg-brutalLime border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col rotate-[-2deg]">
-              <span class="text-[9px] font-mono font-bold bg-black text-white px-1">SCHOLARLY ADAPTER</span>
-              <span class="font-display font-bold text-xs mt-0.5">OpenAlex Works</span>
-              <span class="text-[9px] font-mono">Phase 2 Source</span>
-            </div>
-            <!-- Node Top Right -->
-            <div
-              class="absolute right-1/3 top-1/4 p-2.5 bg-brutalPink border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col rotate-[1deg]">
-              <span class="text-[9px] font-mono font-bold bg-white px-1 border border-black">OPTIMIZATION</span>
-              <span class="font-display font-bold text-xs mt-0.5">HiGHS Solver</span>
-              <span class="text-[9px] font-mono">Phase 7 MILP</span>
-            </div>
-            <svg class="absolute inset-0 w-full h-full pointer-events-none">
-              <line stroke="#000000" stroke-dasharray="4 4" stroke-width="2.5" x1="30%" x2="50%" y1="38%" y2="50%">
-              </line>
-              <line stroke="#000000" stroke-width="2.5" x1="50%" x2="70%" y1="50%" y2="60%"></line>
-              <line stroke="#000000" stroke-dasharray="2 2" stroke-width="2.5" x1="50%" x2="65%" y1="50%" y2="30%">
-              </line>
-            </svg>
-          </div>
-          <div
-            class="absolute bottom-4 left-4 right-4 bg-white border-2 border-black p-3 shadow-[3px_3px_0px_#000000] flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 bg-brutalLime border border-black"></span>
-              <span class="font-mono font-bold text-xs uppercase" id="graph-vertex-status">ACTIVE VERTEX: TOP RETRIEVED
-                MANUSCRIPTS</span>
-            </div>
-            <button
-              class="px-2 py-1 bg-brutalYellow border-2 border-black font-mono font-bold text-xs uppercase hover:bg-black hover:text-white"
-              onclick="switchTab('tab-research')">
-              VIEW FEED
-            </button>
           </div>
         </div>
       </section>
@@ -1001,6 +847,279 @@
             <div class="p-3 bg-[#FAF8EE] border border-black font-mono text-xs text-neutral-600">
               No active search results. Submit a query to discover verified source links.
             </div>
+          </div>
+        </div>
+      </section>
+      <!-- ========================================== -->
+      <!-- VIEW 6: RESEARCH ARCHITECTURE VIEW         -->
+      <!-- ========================================== -->
+      <section class="view-panel flex-col gap-6 hidden" id="tab-architecture">
+        <!-- Architecture Header Banner -->
+        <div class="bg-white border-2 border-black p-5 shadow-[4px_4px_0px_#000000] flex flex-wrap items-center justify-between gap-4">
+          <div class="flex-1 min-w-[300px]">
+            <div class="flex flex-wrap items-center gap-2 mb-1.5">
+              <span class="px-2 py-0.5 bg-black text-white font-mono font-bold text-xs uppercase">TECHNICAL ARCHITECTURE</span>
+              <span class="px-2 py-0.5 bg-brutalLime border border-black font-mono font-bold text-xs uppercase" id="arch-grounding-badge">EVIDENCE-GROUNDED</span>
+              <span class="px-2 py-0.5 bg-brutalYellow border border-black font-mono font-bold text-xs uppercase" id="arch-selection-count-badge">0 PAPERS SELECTED</span>
+              <span class="px-2 py-0.5 bg-brutalCyan border border-black font-mono font-bold text-xs uppercase" id="arch-env-badge">ENV: CLUSTER</span>
+            </div>
+            <h1 class="font-display font-extrabold text-2xl uppercase tracking-tight text-black" id="arch-view-title">
+              Concrete Research Implementation Architecture
+            </h1>
+            <p class="font-body text-xs text-neutral-800 mt-1 max-w-2xl font-medium" id="arch-view-subtitle">
+              Synthesizes real datasets, preprocessing, feature extraction, neural backbone, training, evaluation, inference runtime, and containerized deployment from selected papers.
+            </p>
+          </div>
+          <!-- Environment & Constraints Controls -->
+          <div class="flex flex-wrap items-center gap-2 bg-[#FAF8EE] p-3 border-2 border-black shadow-[2px_2px_0px_#000000]">
+            <div class="flex flex-col gap-1">
+              <span class="text-[10px] font-mono font-bold text-neutral-700 uppercase">TARGET RUNTIME:</span>
+              <div class="flex items-center gap-1">
+                <button class="px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-brutalLime text-black shadow-[1.5px_1.5px_0px_#000000]" id="btn-arch-env-cloud" onclick="setArchEnvironment('cloud')">CLOUD</button>
+                <button class="px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-white text-black hover:bg-cream" id="btn-arch-env-edge" onclick="setArchEnvironment('edge')">EDGE (&lt;=50MS)</button>
+              </div>
+            </div>
+            <div class="flex flex-col gap-1 ml-2">
+              <span class="text-[10px] font-mono font-bold text-neutral-700 uppercase">GPU VRAM BUDGET:</span>
+              <select id="arch-vram-select" class="brutal-input text-xs font-mono font-bold py-1 px-2 bg-white" onchange="setArchVram(this.value)">
+                <option value="24" selected>24 GB (Standard)</option>
+                <option value="8">8 GB (Edge / Laptop)</option>
+                <option value="16">16 GB (Consumer GPU)</option>
+                <option value="40">40 GB (A100 High-Bandwidth)</option>
+                <option value="80">80 GB (H100 Cluster)</option>
+              </select>
+            </div>
+            <button class="brutal-btn px-4 py-2 bg-brutalYellow font-display font-extrabold text-xs uppercase tracking-wider ml-2 flex items-center gap-1.5" onclick="reSynthesizeArchitecture()">
+              <span class="material-symbols-outlined text-sm font-bold" data-icon="bolt">bolt</span>
+              <span>SYNTHESIZE</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Selected Papers Pills Row -->
+        <div class="p-3 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-wrap items-center justify-between gap-2" id="arch-selected-papers-bar">
+          <div class="flex flex-wrap items-center gap-2" id="arch-selected-papers-list">
+            <span class="font-mono text-xs text-neutral-500 italic">No specific papers checked; defaulting to active top-ranked manuscript.</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="brutal-btn px-3 py-1 bg-white hover:bg-cream font-mono font-bold text-xs uppercase" onclick="selectAllPapersForArch()">SELECT ALL FEED</button>
+            <button class="brutal-btn px-3 py-1 bg-white hover:bg-cream font-mono font-bold text-xs uppercase" onclick="clearSelectedPapersForArch()">CLEAR</button>
+          </div>
+        </div>
+
+        <!-- Multi-Paper Compatibility & Conflict Analysis Banner -->
+        <div id="arch-compatibility-card" class="hidden">
+          <!-- Populated by renderArchitecture -->
+        </div>
+
+        <!-- 10-Stage Pipeline Architecture Flow -->
+        <div class="brutal-card p-5 bg-white flex flex-col gap-4">
+          <div class="flex items-center justify-between pb-3 border-b-2 border-black">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-xl font-bold" data-icon="account_tree">account_tree</span>
+              <h2 class="font-display font-extrabold text-base uppercase tracking-tight">10-STAGE TECHNICAL IMPLEMENTATION PIPELINE</h2>
+            </div>
+            <div class="flex items-center gap-3 text-xs font-mono font-bold">
+              <span class="flex items-center gap-1"><span class="w-3 h-3 bg-brutalLime border border-black inline-block"></span> VERIFIED</span>
+              <span class="flex items-center gap-1"><span class="w-3 h-3 bg-brutalYellow border border-black inline-block"></span> INFERRED</span>
+              <span class="flex items-center gap-1"><span class="w-3 h-3 bg-neutral-200 border border-black inline-block"></span> UNKNOWN</span>
+            </div>
+          </div>
+          <!-- Grid of Stage Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4" id="arch-pipeline-stages-grid">
+            <div class="p-8 text-center text-xs font-mono text-neutral-500 bg-[#FAF8EE] border border-black col-span-full">
+              Execute a search or select papers to generate the 10-stage technical architecture.
+            </div>
+          </div>
+        </div>
+
+        <!-- Hardware & Dependencies Split Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+          <!-- Hardware Specs (6 cols) -->
+          <div class="lg:col-span-6 brutal-card p-5 bg-white flex flex-col gap-3">
+            <div class="flex items-center justify-between pb-2.5 border-b-2 border-black">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-lg font-bold" data-icon="memory">memory</span>
+                <h3 class="font-display font-extrabold text-sm uppercase tracking-wider">HARDWARE &amp; COMPUTE SPECS</h3>
+              </div>
+              <span class="text-[11px] font-mono font-bold bg-[#FAF8EE] border border-black px-2 py-0.5" id="arch-hw-count-badge">0 REQUIREMENTS</span>
+            </div>
+            <div class="flex flex-col gap-2.5" id="arch-hardware-list">
+              <div class="p-4 text-center text-xs font-mono text-neutral-500 bg-[#FAF8EE] border border-black">
+                No active hardware specs.
+              </div>
+            </div>
+          </div>
+
+          <!-- Dependencies Specs (6 cols) -->
+          <div class="lg:col-span-6 brutal-card p-5 bg-white flex flex-col gap-3">
+            <div class="flex items-center justify-between pb-2.5 border-b-2 border-black">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-lg font-bold" data-icon="package_2">package_2</span>
+                <h3 class="font-display font-extrabold text-sm uppercase tracking-wider">SOFTWARE STACK &amp; DEPENDENCIES</h3>
+              </div>
+              <span class="text-[11px] font-mono font-bold bg-[#FAF8EE] border border-black px-2 py-0.5" id="arch-deps-count-badge">0 PACKAGES</span>
+            </div>
+            <div class="flex flex-col gap-2.5" id="arch-dependencies-list">
+              <div class="p-4 text-center text-xs font-mono text-neutral-500 bg-[#FAF8EE] border border-black">
+                No active dependencies.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pipeline Data Flow Connections Table -->
+        <div class="brutal-card p-5 bg-white flex flex-col gap-3">
+          <div class="flex items-center justify-between pb-2.5 border-b-2 border-black">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-lg font-bold" data-icon="sync_alt">sync_alt</span>
+              <h3 class="font-display font-extrabold text-sm uppercase tracking-wider">DIRECTED INTERFACE DATA FLOW</h3>
+            </div>
+            <span class="text-[11px] font-mono font-bold bg-brutalCyan border border-black px-2 py-0.5" id="arch-connections-count-badge">0 DATA FLOW EDGES</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left font-mono text-xs border border-black" id="arch-connections-table">
+              <thead>
+                <tr class="bg-black text-white">
+                  <th class="p-2 border border-black">SOURCE STAGE</th>
+                  <th class="p-2 border border-black">DESTINATION STAGE</th>
+                  <th class="p-2 border border-black">DESCRIPTION</th>
+                  <th class="p-2 border border-black">DATA FLOW PAYLOAD / TENSOR FORMAT</th>
+                </tr>
+              </thead>
+              <tbody id="arch-connections-tbody">
+                <tr>
+                  <td colspan="4" class="p-4 text-center text-neutral-500 bg-[#FAF8EE]">No connection paths generated.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Architecture to Roadmap Transition Card -->
+        <div class="p-4 bg-brutalYellow border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2.5">
+            <span class="material-symbols-outlined text-2xl font-bold" data-icon="route">route</span>
+            <div>
+              <div class="font-display font-extrabold text-sm uppercase">CONVERT ARCHITECTURE TO ACTIONABLE IMPLEMENTATION ROADMAP</div>
+              <div class="font-mono text-xs text-neutral-800">Synthesize 8-phase step-by-step engineering roadmap with concrete dependencies, compute gates, and tasks.</div>
+            </div>
+          </div>
+          <button class="brutal-btn px-4 py-2 bg-black text-white hover:bg-white hover:text-black font-display font-extrabold text-xs uppercase flex items-center gap-1.5 shadow-[2px_2px_0px_#000000]" onclick="synthesizeRoadmapFromArchitecture()">
+            <span>GENERATE IMPLEMENTATION ROADMAP &rarr;</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- VIEW 7: RESEARCH GAP INTELLIGENCE VIEW     -->
+      <!-- ========================================== -->
+      <section class="view-panel flex-col gap-6 hidden" id="tab-gaps">
+        <!-- Header Neo-Brutalist Banner -->
+        <div class="bg-white border-[2.5px] border-black p-5 md:p-6 shadow-[5px_5px_0px_#000000] flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div class="flex flex-col gap-1.5 flex-1">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-2.5 py-0.5 bg-black text-white font-mono font-bold text-xs uppercase">
+                RESEARCH GAP INTELLIGENCE
+              </span>
+              <span class="px-2.5 py-0.5 bg-brutalLime border border-black font-mono font-bold text-xs uppercase" id="gaps-grounding-badge">
+                EVIDENCE-GROUNDED
+              </span>
+              <span class="px-2.5 py-0.5 bg-brutalYellow border border-black font-mono font-bold text-xs uppercase" id="gaps-candidate-count-badge">
+                0 PAPERS ANALYZED
+              </span>
+              <span class="px-2.5 py-0.5 bg-brutalCyan border border-black font-mono font-bold text-xs uppercase" id="gaps-count-badge">
+                0 GAPS IDENTIFIED
+              </span>
+            </div>
+            <h1 class="font-display font-extrabold text-2xl md:text-3xl uppercase tracking-tight text-black mt-1" id="gaps-view-title">
+              Potential Research Gaps &amp; Opportunity Landscape
+            </h1>
+            <p class="font-body text-xs md:text-sm text-neutral-800 max-w-3xl font-medium" id="gaps-view-subtitle">
+              Analyzes research coverage, benchmark homogeneity, and recurring paper limitations. Limited evidence was found within the analyzed candidate set.
+            </p>
+          </div>
+          <!-- Action Control Strip -->
+          <div class="flex items-center gap-2">
+            <button class="brutal-btn px-4 py-2 bg-brutalYellow font-display font-extrabold text-xs uppercase flex items-center gap-1.5 shadow-[2px_2px_0px_#000000]" onclick="reAnalyzeResearchGaps()">
+              <span class="material-symbols-outlined text-sm font-bold" data-icon="sync">sync</span>
+              <span>RE-ANALYZE GAPS</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Landscape Distribution Strip -->
+        <div class="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col gap-3" id="gaps-landscape-summary-card">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-black pb-2">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-lg font-bold" data-icon="insights">insights</span>
+              <span class="font-display font-extrabold text-xs uppercase tracking-wide">CANDIDATE RESEARCH COVERAGE LANDSCAPE</span>
+            </div>
+            <span class="font-mono text-xs text-neutral-600 italic" id="gaps-scope-label">Limited evidence was found within the analyzed candidate set.</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-mono">
+            <div class="p-2.5 bg-[#FAF8EE] border border-black">
+              <div class="font-bold text-neutral-600 uppercase text-[10px] mb-1">DOMINANT METHODS IN CORPUS:</div>
+              <div class="font-semibold text-black flex flex-wrap gap-1" id="gaps-dominant-methods-list">
+                <span class="text-neutral-500 italic">None analyzed yet.</span>
+              </div>
+            </div>
+            <div class="p-2.5 bg-[#FAF8EE] border border-black">
+              <div class="font-bold text-neutral-600 uppercase text-[10px] mb-1">DOMINANT BENCHMARK DATASETS:</div>
+              <div class="font-semibold text-black flex flex-wrap gap-1" id="gaps-dominant-datasets-list">
+                <span class="text-neutral-500 italic">None analyzed yet.</span>
+              </div>
+            </div>
+            <div class="p-2.5 bg-[#FAF8EE] border border-black">
+              <div class="font-bold text-neutral-600 uppercase text-[10px] mb-1">FREQUENTLY CITED LIMITATIONS:</div>
+              <div class="font-semibold text-black space-y-1 text-[11px]" id="gaps-cited-limitations-list">
+                <span class="text-neutral-500 italic">None extracted yet.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Controls Strip -->
+        <div class="p-3 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="text-[10px] font-mono font-extrabold uppercase bg-black text-white px-1.5 py-0.5">FILTER GAP CATEGORY:</span>
+            <button class="px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-black text-white shadow-[1.5px_1.5px_0px_#000000] transition-all" id="btn-gap-filter-all" onclick="filterResearchGaps('all')">
+              ALL GAPS
+            </button>
+            <button class="px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-white hover:bg-cream text-black shadow-[1.5px_1.5px_0px_#000000] transition-all" id="btn-gap-filter-method" onclick="filterResearchGaps('method')">
+              METHOD
+            </button>
+            <button class="px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-white hover:bg-cream text-black shadow-[1.5px_1.5px_0px_#000000] transition-all" id="btn-gap-filter-dataset" onclick="filterResearchGaps('dataset')">
+              DATASET
+            </button>
+            <button class="px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-white hover:bg-cream text-black shadow-[1.5px_1.5px_0px_#000000] transition-all" id="btn-gap-filter-evaluation" onclick="filterResearchGaps('evaluation')">
+              EVALUATION
+            </button>
+            <button class="px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-white hover:bg-cream text-black shadow-[1.5px_1.5px_0px_#000000] transition-all" id="btn-gap-filter-application" onclick="filterResearchGaps('application')">
+              APPLICATION
+            </button>
+            <button class="px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-white hover:bg-cream text-black shadow-[1.5px_1.5px_0px_#000000] transition-all" id="btn-gap-filter-scalability" onclick="filterResearchGaps('scalability')">
+              SCALABILITY
+            </button>
+          </div>
+          <div class="font-mono text-xs text-neutral-600">
+            <span id="gaps-visible-count">Showing 0 potential gaps</span>
+          </div>
+        </div>
+
+        <!-- Dynamic Gaps Cards Container -->
+        <div class="flex flex-col gap-5" id="gaps-cards-container">
+          <div class="p-10 text-center text-xs font-mono text-neutral-500 bg-[#FAF8EE] border border-black">
+            Execute a search or select papers to generate evidence-backed research gap intelligence.
+          </div>
+        </div>
+
+        <!-- Scientific Epistemological Scope Disclaimer -->
+        <div class="p-3.5 bg-[#FAF8EE] border-2 border-black text-xs font-mono text-neutral-800 flex items-start gap-2 shadow-[2px_2px_0px_#000000]">
+          <span class="material-symbols-outlined text-base font-bold text-black" data-icon="info">info</span>
+          <div>
+            <strong>SCIENTIFIC EPISTEMOLOGICAL SCOPE:</strong>
+            Potential research gaps represent underexplored areas observed within the analyzed candidate set. Limited evidence was found within the analyzed candidate set, which does not constitute proof that no prior work exists across all scholarly literature.
           </div>
         </div>
       </section>
@@ -1121,6 +1240,21 @@
             onclick="switchTab('tab-buildability'); closePaperDetailsModal();">
             INSPECT BUILDABILITY
           </button>
+          <button
+            class="brutal-btn px-3 py-1.5 bg-brutalYellow font-mono text-xs uppercase font-bold hover:bg-black hover:text-white"
+            onclick="synthesizeRoadmapForPaper(selectedPaperIndex); closePaperDetailsModal();">
+            GENERATE ROADMAP
+          </button>
+          <button
+            class="brutal-btn px-3 py-1.5 bg-brutalCyan font-mono text-xs uppercase font-bold hover:bg-black hover:text-white"
+            onclick="analyzeGapsForPaper(selectedPaperIndex); closePaperDetailsModal();">
+            ANALYZE GAPS
+          </button>
+          <button
+            class="brutal-btn px-3 py-1.5 bg-brutalPink font-mono text-xs uppercase font-bold hover:bg-black hover:text-white"
+            onclick="openPaperIntelligence(selectedPaperIndex); closePaperDetailsModal();">
+            PAPER INTELLIGENCE
+          </button>
         </div>
         <a class="brutal-btn px-4 py-1.5 bg-black text-white font-display font-extrabold text-xs uppercase hover:bg-brutalYellow hover:text-black"
           href="#" id="modal-paper-link" rel="noreferrer" target="_blank">
@@ -1211,6 +1345,55 @@
       </div>
     </div>
   </div>
+  <!-- ========================================== -->
+  <!-- MODAL: PAPER INTELLIGENCE MODAL (ADD-ON)   -->
+  <!-- ========================================== -->
+  <div class="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6 bg-black/60 backdrop-blur-sm hidden"
+    id="modal-paper-intelligence">
+    <div
+      class="bg-white border-[3px] border-black shadow-[8px_8px_0px_#000000] w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-5 py-3.5 border-b-[2.5px] border-black bg-brutalPink">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-black font-extrabold text-2xl"
+            data-icon="psychology">psychology</span>
+          <div>
+            <h2 class="font-display font-extrabold text-sm md:text-base uppercase text-black" id="pi-modal-title">Paper Intelligence &amp; Critique</h2>
+            <div class="flex items-center gap-2 text-[10px] font-mono font-bold text-black mt-0.5">
+              <span class="bg-white px-1.5 py-0.2 border border-black" id="pi-modal-paper-id">ID: --</span>
+              <span class="bg-brutalLime px-1.5 py-0.2 border border-black" id="pi-modal-status-badge">EVIDENCE-GROUNDED</span>
+            </div>
+          </div>
+        </div>
+        <button
+          class="w-8 h-8 bg-white border-2 border-black flex items-center justify-center font-bold shadow-[2px_2px_0px_#000000] hover:bg-brutalCoral transition-all"
+          onclick="closePaperIntelligenceModal()" title="Close Paper Intelligence">
+          <span class="material-symbols-outlined text-base font-bold" data-icon="close">close</span>
+        </button>
+      </div>
+      <!-- Modal Body (Custom Scrollbar) -->
+      <div class="p-5 overflow-y-auto custom-scrollbar flex flex-col gap-5 bg-[#FFFDF0]" id="pi-modal-body">
+        <!-- Rendered by renderPaperIntelligence / renderPaperIntelligenceLoading / renderPaperIntelligenceError -->
+      </div>
+      <!-- Modal Footer -->
+      <div class="px-5 py-3 border-t-[2.5px] border-black bg-white flex flex-wrap items-center justify-between gap-3">
+        <div class="text-[11px] font-mono text-neutral-600 italic">
+          ResearchMind Paper Intelligence Engine &bull; Strictly grounded in publication evidence
+        </div>
+        <div class="flex items-center gap-2">
+          <a class="brutal-btn px-3 py-1.5 bg-[#FAF8EE] font-mono text-xs uppercase font-bold hover:bg-black hover:text-white"
+            href="#" id="pi-modal-external-link" rel="noreferrer" target="_blank">
+            EXTERNAL SOURCE &nearr;
+          </a>
+          <button
+            class="brutal-btn px-4 py-1.5 bg-black text-white font-display font-extrabold text-xs uppercase hover:bg-brutalYellow hover:text-black"
+            onclick="closePaperIntelligenceModal()">
+            CLOSE INTELLIGENCE
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- INTERACTIVITY JAVASCRIPT -->
   <script>
     // Global State
@@ -1219,6 +1402,38 @@
     let savedPapers = [];
     let currentSearchQuery = '';
     let isSearching = false;
+    let activeFeedback = [];
+    let optimizationMetadata = null;
+    let currentKnowledgeGraph = null;
+    let selectedGraphNodeId = null;
+    let activeGraphFilter = 'all';
+    let graphZoom = 1.0;
+    let selectedPaperIdsForArch = new Set();
+    let currentArchitecture = null;
+    let archConstraints = { target_environment: 'cloud', max_gpu_memory_gb: 24 };
+
+    // Roadmap state variables
+    let selectedPaperIdsForRoadmap = new Set();
+    let currentRoadmap = null;
+    let roadmapConstraints = {
+      limited_gpu: false,
+      limited_time: false,
+      public_datasets_only: false,
+      open_source_only: false,
+      max_gpu_memory_gb: 24,
+      target_environment: 'cloud'
+    };
+    let roadmapPhaseStatus = {};
+
+    // Research Gap Intelligence state variables
+    let currentResearchGaps = null;
+    let activeGapFilter = 'all';
+
+    // Paper Intelligence state variables (ADD-ON ONLY, STRICTLY ISOLATED)
+    let currentPaperIntelligence = null;
+    let currentPaperIntelligencePaperId = null;
+    let paperIntelligenceLoading = false;
+    let paperIntelligenceError = null;
 
     // Utility to escape HTML strings safely
     function escapeHtml(str) {
@@ -1245,16 +1460,19 @@
     }
 
     function getUtilityScore(paper) {
+      if (paper.utility_score !== undefined && paper.utility_score !== null) {
+        return (paper.utility_score * 100).toFixed(1);
+      }
       if (paper.features && paper.features.utility_score !== undefined && paper.features.utility_score !== null) {
         return (paper.features.utility_score * 100).toFixed(1);
       }
-      if (paper.citation_count) {
-        return Math.min(99.0, (paper.citation_count / 10 + 50)).toFixed(1);
-      }
-      return '75.0';
+      return '0.0';
     }
 
     function getRelevanceScore(paper) {
+      if (paper.relevance_score !== undefined && paper.relevance_score !== null) {
+        return (paper.relevance_score * 100).toFixed(1) + '%';
+      }
       if (paper.features && paper.features.cross_encoder_score !== undefined && paper.features.cross_encoder_score !== null) {
         return (paper.features.cross_encoder_score * 100).toFixed(1) + '%';
       }
@@ -1264,7 +1482,7 @@
       if (paper.features && paper.features.rrf_score !== undefined) {
         return (paper.features.rrf_score * 100).toFixed(1) + '%';
       }
-      return '92.0%';
+      return '0.0%';
     }
 
     function getBuildabilityScore(paper) {
@@ -1278,9 +1496,7 @@
       if (paper.features && paper.features.buildability !== undefined && paper.features.buildability !== null) {
         return Math.round(paper.features.buildability * 100);
       }
-      if (paper.code_url) return 85;
-      if (paper.open_access) return 65;
-      return 40;
+      return 0;
     }
 
     function isPaperSaved(paper) {
@@ -1304,6 +1520,45 @@
         updateBuildabilityView(currentSearchResults[selectedPaperIndex]);
       }
 
+      if (tabId === 'tab-knowledge') {
+        if (currentKnowledgeGraph) {
+          renderKnowledgeGraph(currentKnowledgeGraph);
+        } else if (currentSearchQuery) {
+          fetchKnowledgeGraph(currentSearchQuery);
+        }
+      }
+
+      if (tabId === 'tab-architecture') {
+        if (currentArchitecture) {
+          renderArchitecture(currentArchitecture);
+        } else if (currentSearchResults.length > 0) {
+          reSynthesizeArchitecture();
+        }
+      }
+
+      if (tabId === 'tab-roadmap') {
+        const roadmapMatchesQuery = currentRoadmap && (
+          !currentSearchQuery ||
+          currentRoadmap.query === currentSearchQuery ||
+          currentRoadmap.target_query === currentSearchQuery
+        );
+        if (roadmapMatchesQuery) {
+          renderRoadmap(currentRoadmap);
+        } else {
+          fetchRoadmap();
+        }
+      }
+
+      if (tabId === 'tab-gaps') {
+        if (currentResearchGaps) {
+          renderResearchGaps(currentResearchGaps);
+        } else if (currentSearchResults.length > 0) {
+          fetchResearchGaps();
+        } else {
+          fetchResearchGaps();
+        }
+      }
+
       document.querySelectorAll('#main-nav-bar .nav-item').forEach(btn => {
         if (btn.getAttribute('data-tab') === tabId) {
           btn.className = 'nav-item px-3 py-1 font-display font-extrabold text-xs uppercase tracking-wide border-2 border-black bg-brutalYellow shadow-[3px_3px_0px_#000000] -translate-y-0.5 transition-all flex items-center gap-1.5';
@@ -1319,6 +1574,1945 @@
           btn.className = 'rail-btn flex items-center justify-between px-3 py-2 bg-white border-2 border-black text-left font-display font-bold text-xs uppercase shadow-[2px_2px_0px_#000000] hover:bg-cream active:translate-x-[1px] active:translate-y-[1px] transition-all';
         }
       });
+    }
+
+    // =========================================================================
+    // KNOWLEDGE GRAPH VISUALIZATION & INTERACTIVITY
+    // =========================================================================
+
+    function filterGraphType(type) {
+      activeGraphFilter = type;
+      document.querySelectorAll('#kg-filter-legend .kg-filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-type') === type) {
+          btn.className = 'kg-filter-btn px-2 py-0.5 bg-black text-white border border-black text-xs font-mono font-bold transition-all';
+        } else {
+          btn.className = 'kg-filter-btn px-2 py-0.5 bg-white text-black border border-black text-xs font-mono font-bold hover:bg-cream transition-all';
+        }
+      });
+      if (currentKnowledgeGraph) {
+        renderKnowledgeGraph(currentKnowledgeGraph);
+      }
+    }
+
+    function zoomGraph(factor) {
+      graphZoom = Math.max(0.4, Math.min(2.5, graphZoom * factor));
+      const container = document.getElementById('graph-container');
+      if (container) container.style.transform = `scale(${graphZoom})`;
+    }
+
+    function resetGraphZoom() {
+      graphZoom = 1.0;
+      const container = document.getElementById('graph-container');
+      if (container) container.style.transform = 'scale(1.0)';
+    }
+
+    async function fetchKnowledgeGraph(query) {
+      if (!query || !query.trim()) return;
+      try {
+        const statusEl = document.getElementById('graph-vertex-status');
+        if (statusEl) statusEl.textContent = 'SYNTHESIZING TOPOLOGY...';
+        const res = await fetch(`${API_BASE_URL}/api/v1/knowledge-graph?query=${encodeURIComponent(query)}&limit=10`);
+        if (res.ok) {
+          const g = await res.json();
+          currentKnowledgeGraph = g;
+          renderKnowledgeGraph(g);
+        }
+      } catch (err) {
+        console.error('Failed to fetch knowledge graph:', err);
+      }
+    }
+
+    function selectGraphNode(nodeId) {
+      if (!currentKnowledgeGraph || !currentKnowledgeGraph.nodes) return;
+      selectedGraphNodeId = nodeId;
+      const node = currentKnowledgeGraph.nodes.find(n => n.id === nodeId);
+      if (!node) return;
+
+      // Update node DOM highlights
+      document.querySelectorAll('.kg-node').forEach(el => {
+        if (el.getAttribute('data-node-id') === nodeId) {
+          el.classList.add('ring-4', 'ring-red-500', 'z-30');
+          el.classList.remove('z-10');
+        } else {
+          el.classList.remove('ring-4', 'ring-red-500', 'z-30');
+          el.classList.add('z-10');
+        }
+      });
+
+      // Update edge lines highlight
+      const connectedEdges = (currentKnowledgeGraph.edges || []).filter(
+        e => e.source === nodeId || e.target === nodeId
+      );
+
+      document.querySelectorAll('.kg-edge-line').forEach(line => {
+        const s = line.getAttribute('data-source');
+        const t = line.getAttribute('data-target');
+        if (s === nodeId || t === nodeId) {
+          line.setAttribute('stroke', '#EF4444');
+          line.setAttribute('stroke-width', '3');
+          line.setAttribute('marker-end', 'url(#kg-arrow-active)');
+          line.style.opacity = '1.0';
+        } else {
+          line.setAttribute('stroke', '#000000');
+          line.setAttribute('stroke-width', '1.5');
+          line.setAttribute('marker-end', 'url(#kg-arrow)');
+          line.style.opacity = '0.25';
+        }
+      });
+
+      // Populate Inspector
+      const titleEl = document.getElementById('kg-inspector-title');
+      const typeEl = document.getElementById('kg-inspector-type');
+      const bodyEl = document.getElementById('kg-inspector-body');
+      const statusEl = document.getElementById('graph-vertex-status');
+
+      if (titleEl) titleEl.textContent = node.label;
+      if (typeEl) typeEl.textContent = (node.type || 'entity').toUpperCase();
+      if (statusEl) statusEl.textContent = `SELECTED: ${node.label.toUpperCase()} (${(node.type || 'entity').toUpperCase()}) • ${connectedEdges.length} RELATIONSHIPS`;
+
+      if (bodyEl) {
+        const meta = node.metadata || node.properties || {};
+        let metaHtml = '';
+        if (meta.venue) metaHtml += `<div class="flex justify-between py-1 border-b border-black text-[11px] font-mono"><span class="text-neutral-600">Venue:</span><span class="font-bold truncate max-w-[150px]">${escapeHtml(meta.venue)}</span></div>`;
+        if (meta.year) metaHtml += `<div class="flex justify-between py-1 border-b border-black text-[11px] font-mono"><span class="text-neutral-600">Year:</span><span class="font-bold">${meta.year}</span></div>`;
+        if (meta.citations !== undefined) metaHtml += `<div class="flex justify-between py-1 border-b border-black text-[11px] font-mono"><span class="text-neutral-600">Citations:</span><span class="font-bold">${meta.citations}</span></div>`;
+        if (meta.relevance_score !== undefined) metaHtml += `<div class="flex justify-between py-1 border-b border-black text-[11px] font-mono"><span class="text-neutral-600">Relevance:</span><span class="font-bold">${(meta.relevance_score * 100).toFixed(1)}%</span></div>`;
+        if (meta.utility_score !== undefined) metaHtml += `<div class="flex justify-between py-1 border-b border-black text-[11px] font-mono"><span class="text-neutral-600">Utility:</span><span class="font-bold">${(meta.utility_score * 100).toFixed(1)}</span></div>`;
+        if (meta.buildability_score !== undefined) metaHtml += `<div class="flex justify-between py-1 border-b border-black text-[11px] font-mono"><span class="text-neutral-600">Buildability:</span><span class="font-bold">${Math.round(meta.buildability_score * 100)}/100</span></div>`;
+        if (meta.doi) metaHtml += `<div class="flex justify-between py-1 border-b border-black text-[11px] font-mono"><span class="text-neutral-600">DOI:</span><span class="font-bold truncate max-w-[150px]">${escapeHtml(meta.doi)}</span></div>`;
+
+        let edgesHtml = '';
+        if (connectedEdges.length === 0) {
+          edgesHtml = `<p class="text-neutral-500 font-mono text-xs italic py-2">No direct relational edges connected.</p>`;
+        } else {
+          edgesHtml = connectedEdges.map(edge => {
+            const isOutgoing = edge.source === nodeId;
+            const otherId = isOutgoing ? edge.target : edge.source;
+            const otherNode = currentKnowledgeGraph.nodes.find(n => n.id === otherId) || { label: otherId, type: 'entity' };
+            const confPct = Math.round((edge.confidence !== undefined ? edge.confidence : 1.0) * 100);
+
+            return `
+              <div class="p-2.5 bg-cream border-2 border-black mb-2 shadow-[2px_2px_0px_#000000] transition-all hover:bg-white">
+                <div class="flex items-center justify-between gap-1 mb-1">
+                  <span class="px-1.5 py-0.5 bg-black text-white text-[9px] font-mono font-bold uppercase tracking-wide">
+                    ${isOutgoing ? '→' : '←'} ${escapeHtml(edge.type || edge.label || 'rel')}
+                  </span>
+                  <span class="text-[9px] font-mono font-bold text-neutral-700 bg-white px-1 border border-black">${confPct}% CONF</span>
+                </div>
+                <div class="font-display font-extrabold text-xs text-black cursor-pointer hover:underline flex items-center justify-between" onclick="selectGraphNode('${escapeHtml(otherId)}')">
+                  <span class="truncate max-w-[190px]">${escapeHtml(otherNode.label)}</span>
+                  <span class="text-[9px] font-mono uppercase bg-brutalYellow px-1 border border-black">${escapeHtml(otherNode.type)}</span>
+                </div>
+                ${edge.evidence ? `<p class="font-body text-[11px] text-neutral-700 mt-1 leading-tight italic border-t border-neutral-300 pt-1">"${escapeHtml(edge.evidence)}"</p>` : ''}
+              </div>
+            `;
+          }).join('');
+        }
+
+        bodyEl.innerHTML = `
+          <div class="space-y-3">
+            <div class="bg-white border-2 border-black p-2.5 shadow-[2px_2px_0px_#000000]">
+              <span class="text-[9px] font-mono font-bold uppercase bg-black text-white px-1 mb-1 inline-block">ENTITY SPECIFICATION</span>
+              <h4 class="font-display font-extrabold text-sm uppercase text-black mb-2">${escapeHtml(node.label)}</h4>
+              ${metaHtml ? `<div class="space-y-0.5">${metaHtml}</div>` : ''}
+              ${meta.url ? `<a href="${escapeHtml(meta.url)}" target="_blank" class="mt-2 inline-flex items-center gap-1 text-[11px] font-mono font-bold text-blue-600 hover:underline">Open External Link <span class="material-symbols-outlined text-xs">open_in_new</span></a>` : ''}
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wide bg-black text-white px-1.5 py-0.5">RELATIONSHIPS (${connectedEdges.length})</span>
+                <span class="text-[10px] font-mono text-neutral-600">EVIDENCE-GROUNDED</span>
+              </div>
+              <div class="space-y-1.5">${edgesHtml}</div>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function renderKnowledgeGraph(graph) {
+      if (!graph || !graph.nodes || graph.nodes.length === 0) {
+        const bodyEl = document.getElementById('kg-inspector-body');
+        if (bodyEl) {
+          bodyEl.innerHTML = `
+            <div class="p-6 text-center text-neutral-500 font-mono text-xs flex flex-col items-center justify-center h-full">
+              <span class="material-symbols-outlined text-4xl mb-2 text-neutral-400">hub</span>
+              <p class="font-bold text-black uppercase mb-1">Topology Uninitialized</p>
+              <p>Run a search query to synthesize an evidence-grounded knowledge graph from retrieved papers.</p>
+            </div>
+          `;
+        }
+        return;
+      }
+
+      currentKnowledgeGraph = graph;
+
+      // Update counters & headers
+      const nodeBadge = document.getElementById('kg-node-count-badge');
+      const edgeBadge = document.getElementById('kg-edge-count-badge');
+      const queryLabel = document.getElementById('graph-active-query-label');
+      if (nodeBadge) nodeBadge.textContent = `${graph.total_nodes || graph.nodes.length} NODES`;
+      if (edgeBadge) edgeBadge.textContent = `${graph.total_edges || graph.edges.length} EDGES`;
+      if (queryLabel) queryLabel.textContent = (currentSearchQuery || 'RESEARCH QUERY').toUpperCase();
+
+      // Node type colors
+      const TYPE_COLORS = {
+        paper: '#FFE600',       // brutalYellow
+        author: '#FFFFFF',      // white
+        institution: '#E0E7FF', // light indigo
+        model: '#38BDF8',       // brutalCyan
+        dataset: '#A3E635',     // brutalLime
+        method: '#FF6B6B',      // brutalCoral
+        task: '#C084FC',        // brutalPurple
+        venue: '#FF90E8',       // brutalPink
+        concept: '#FEF08A',     // warm light yellow
+        technology: '#60A5FA',  // brutalBlue
+        repository: '#4ADE80'   // brutalGreen
+      };
+
+      // Filter nodes
+      let visibleNodes = graph.nodes;
+      if (activeGraphFilter !== 'all') {
+        const filterType = activeGraphFilter;
+        const relevantNodeIds = new Set();
+        graph.nodes.forEach(n => {
+          if (n.type === filterType) relevantNodeIds.add(n.id);
+        });
+        (graph.edges || []).forEach(e => {
+          if (relevantNodeIds.has(e.source) || relevantNodeIds.has(e.target)) {
+            relevantNodeIds.add(e.source);
+            relevantNodeIds.add(e.target);
+          }
+        });
+        visibleNodes = graph.nodes.filter(n => relevantNodeIds.has(n.id));
+      }
+
+      const visibleNodeIds = new Set(visibleNodes.map(n => n.id));
+      const visibleEdges = (graph.edges || []).filter(
+        e => visibleNodeIds.has(e.source) && visibleNodeIds.has(e.target)
+      );
+
+      // Separate papers from non-papers
+      const paperNodes = visibleNodes.filter(n => n.type === 'paper');
+      const entityNodes = visibleNodes.filter(n => n.type !== 'paper');
+
+      // Coordinate calculations
+      const nodeCoords = new Map();
+      const W = 1100;
+      const H = 700;
+      const cx = W / 2;
+      const cy = H / 2;
+
+      // Position paper nodes on inner circle
+      const Np = paperNodes.length;
+      paperNodes.forEach((p, idx) => {
+        if (Np === 1) {
+          nodeCoords.set(p.id, { x: cx, y: cy });
+        } else {
+          const angle = (2 * Math.PI * idx) / Np - Math.PI / 2;
+          const r = Math.min(220, 140 + Np * 15);
+          nodeCoords.set(p.id, {
+            x: Math.round(cx + r * Math.cos(angle)),
+            y: Math.round(cy + r * Math.sin(angle))
+          });
+        }
+      });
+
+      // Position non-paper entity nodes in outer orbits clustered around related papers
+      const Ne = entityNodes.length;
+      entityNodes.forEach((ent, idx) => {
+        const connectedPaperEdges = visibleEdges.filter(
+          e => (e.source === ent.id && visibleNodeIds.has(e.target)) || (e.target === ent.id && visibleNodeIds.has(e.source))
+        );
+        const connectedPaperIds = connectedPaperEdges.map(e => e.source === ent.id ? e.target : e.source).filter(id => nodeCoords.has(id));
+
+        if (connectedPaperIds.length > 0) {
+          let avgAngle = 0;
+          connectedPaperIds.forEach(pid => {
+            const pc = nodeCoords.get(pid);
+            avgAngle += Math.atan2(pc.y - cy, pc.x - cx);
+          });
+          avgAngle /= connectedPaperIds.length;
+          const offsetAngle = avgAngle + ((idx % 5) - 2) * 0.28;
+          const rOuter = Math.min(320, 270 + (idx % 3) * 35);
+          const rawX = Math.round(cx + rOuter * Math.cos(offsetAngle));
+          const rawY = Math.round(cy + rOuter * Math.sin(offsetAngle));
+          nodeCoords.set(ent.id, {
+            x: Math.max(70, Math.min(W - 70, rawX)),
+            y: Math.max(50, Math.min(H - 50, rawY))
+          });
+        } else {
+          const angle = (2 * Math.PI * idx) / Math.max(1, Ne);
+          const rOuter = 300;
+          nodeCoords.set(ent.id, {
+            x: Math.max(70, Math.min(W - 70, Math.round(cx + rOuter * Math.cos(angle)))),
+            y: Math.max(50, Math.min(H - 50, Math.round(cy + rOuter * Math.sin(angle))))
+          });
+        }
+      });
+
+      // Render SVG Edges
+      const svgEdges = document.getElementById('kg-svg-edges');
+      if (svgEdges) {
+        const defsHtml = `
+          <defs>
+            <marker id="kg-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#000000" />
+            </marker>
+            <marker id="kg-arrow-active" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#EF4444" />
+            </marker>
+          </defs>
+        `;
+        let linesHtml = '';
+        visibleEdges.forEach((edge, eIdx) => {
+          const sCoord = nodeCoords.get(edge.source);
+          const tCoord = nodeCoords.get(edge.target);
+          if (!sCoord || !tCoord) return;
+
+          const mx = (sCoord.x + tCoord.x) / 2;
+          const my = (sCoord.y + tCoord.y) / 2;
+          const edgeTypeLabel = escapeHtml(edge.type || 'rel');
+
+          linesHtml += `
+            <g class="kg-edge-group">
+              <line x1="${sCoord.x}" y1="${sCoord.y}" x2="${tCoord.x}" y2="${tCoord.y}"
+                    stroke="#000000" stroke-width="1.5" marker-end="url(#kg-arrow)"
+                    class="kg-edge-line" data-source="${edge.source}" data-target="${edge.target}" id="edge-${eIdx}" />
+              <rect x="${mx - 24}" y="${my - 7}" width="48" height="14" fill="#FFFFFF" stroke="#000000" stroke-width="1" />
+              <text x="${mx}" y="${my + 3}" font-family="Space Mono" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle" pointer-events="none">
+                ${edgeTypeLabel}
+              </text>
+            </g>
+          `;
+        });
+        svgEdges.innerHTML = defsHtml + linesHtml;
+      }
+
+      // Render HTML Nodes
+      const nodesLayer = document.getElementById('kg-nodes-layer');
+      if (nodesLayer) {
+        let nodesHtml = '';
+        visibleNodes.forEach(node => {
+          const coord = nodeCoords.get(node.id);
+          if (!coord) return;
+
+          const color = TYPE_COLORS[node.type] || '#FFFFFF';
+          const isPaper = node.type === 'paper';
+          const meta = node.metadata || node.properties || {};
+          const rankTag = isPaper && meta.rank ? `<span class="px-1 bg-black text-white text-[8px] font-mono font-bold">#${meta.rank}</span>` : '';
+
+          nodesHtml += `
+            <div id="node-${node.id}" data-node-id="${node.id}"
+                 class="kg-node absolute brutal-card cursor-pointer select-none transition-all hover:scale-105 active:scale-95 z-10"
+                 style="left: ${coord.x}px; top: ${coord.y}px; transform: translate(-50%, -50%); background-color: ${color}; min-width: ${isPaper ? '140px' : '90px'}; max-width: ${isPaper ? '220px' : '150px'}; padding: 6px 8px;"
+                 onclick="selectGraphNode('${node.id}')">
+              <div class="flex items-center justify-between gap-1 mb-0.5">
+                <span class="text-[8px] font-mono font-bold bg-black text-white px-1 uppercase">${node.type}</span>
+                ${rankTag}
+              </div>
+              <div class="font-display font-extrabold text-[11px] leading-tight text-black truncate max-w-full" title="${escapeHtml(node.label)}">
+                ${escapeHtml(node.label)}
+              </div>
+            </div>
+          `;
+        });
+        nodesLayer.innerHTML = nodesHtml;
+      }
+
+      // Automatically select first paper or previous selected node
+      const targetSelectId = (selectedGraphNodeId && graph.nodes.some(n => n.id === selectedGraphNodeId))
+        ? selectedGraphNodeId
+        : (paperNodes.length > 0 ? paperNodes[0].id : graph.nodes[0]?.id);
+
+      if (targetSelectId) {
+        selectGraphNode(targetSelectId);
+      }
+    }
+
+    // =========================================================================
+    // RESEARCH ARCHITECTURE SYNTHESIS & INTERACTIVITY
+    // =========================================================================
+
+    function setArchEnvironment(env) {
+      archConstraints.target_environment = env;
+      const btnCloud = document.getElementById('btn-arch-env-cloud');
+      const btnEdge = document.getElementById('btn-arch-env-edge');
+      if (btnCloud && btnEdge) {
+        if (env === 'cloud') {
+          btnCloud.className = 'px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-brutalLime text-black shadow-[1.5px_1.5px_0px_#000000]';
+          btnEdge.className = 'px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-white text-black hover:bg-cream';
+        } else {
+          btnEdge.className = 'px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-brutalLime text-black shadow-[1.5px_1.5px_0px_#000000]';
+          btnCloud.className = 'px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-white text-black hover:bg-cream';
+        }
+      }
+      reSynthesizeArchitecture();
+    }
+
+    function setArchVram(vram) {
+      archConstraints.max_gpu_memory_gb = parseFloat(vram) || 24;
+      reSynthesizeArchitecture();
+    }
+
+    function toggleSelectPaperForArchitecture(docId) {
+      if (selectedPaperIdsForArch.has(docId)) {
+        selectedPaperIdsForArch.delete(docId);
+      } else {
+        selectedPaperIdsForArch.add(docId);
+      }
+      renderSearchResults(currentSearchResults);
+      updateArchSelectedPills();
+    }
+
+    function selectAllPapersForArch() {
+      currentSearchResults.forEach(doc => {
+        const id = doc.internal_id || doc.paper_id;
+        if (id) selectedPaperIdsForArch.add(id);
+      });
+      renderSearchResults(currentSearchResults);
+      updateArchSelectedPills();
+      reSynthesizeArchitecture();
+    }
+
+    function clearSelectedPapersForArch() {
+      selectedPaperIdsForArch.clear();
+      renderSearchResults(currentSearchResults);
+      updateArchSelectedPills();
+    }
+
+    function updateArchSelectedPills() {
+      const listEl = document.getElementById('arch-selected-papers-list');
+      const countBadge = document.getElementById('arch-selection-count-badge');
+      if (!listEl) return;
+
+      const ids = Array.from(selectedPaperIdsForArch);
+      if (countBadge) {
+        countBadge.textContent = `${ids.length} PAPERS SELECTED`;
+      }
+
+      if (ids.length === 0) {
+        listEl.innerHTML = `<span class="font-mono text-xs text-neutral-500 italic">No specific papers checked; defaulting to active top-ranked manuscript.</span>`;
+        return;
+      }
+
+      listEl.innerHTML = ids.map(id => {
+        const paper = currentSearchResults.find(p => (p.internal_id || p.paper_id) === id);
+        const title = paper ? paper.title : id;
+        return `
+          <span class="px-2 py-1 bg-white border border-black font-mono font-bold text-xs flex items-center gap-1.5 shadow-[1px_1px_0px_#000000]">
+            <span class="truncate max-w-[200px]" title="${escapeHtml(title)}">${escapeHtml(title)}</span>
+            <button class="w-4 h-4 rounded-full bg-brutalCoral text-white flex items-center justify-center font-bold text-[10px] hover:bg-black" onclick="toggleSelectPaperForArchitecture('${escapeHtml(id)}')">&times;</button>
+          </span>
+        `;
+      }).join('');
+    }
+
+    function synthesizeArchitectureForPaper(idx) {
+      if (idx >= 0 && idx < currentSearchResults.length) {
+        const paper = currentSearchResults[idx];
+        const docId = paper.internal_id || paper.paper_id;
+        selectedPaperIdsForArch.clear();
+        if (docId) selectedPaperIdsForArch.add(docId);
+        selectedPaperIndex = idx;
+        switchTab('tab-architecture');
+        updateArchSelectedPills();
+        fetchArchitecture([docId], archConstraints);
+      }
+    }
+
+    function reSynthesizeArchitecture() {
+      fetchArchitecture(Array.from(selectedPaperIdsForArch), archConstraints);
+    }
+
+    async function fetchArchitecture(paperIds = null, constraints = null) {
+      const stagesGrid = document.getElementById('arch-pipeline-stages-grid');
+      if (stagesGrid) {
+        stagesGrid.innerHTML = `
+          <div class="col-span-full p-10 bg-white border-2 border-black flex flex-col items-center justify-center text-center">
+            <div class="w-12 h-12 bg-brutalYellow border-2 border-black animate-spin flex items-center justify-center mb-3 shadow-[3px_3px_0px_#000000]">
+              <span class="material-symbols-outlined text-2xl font-bold">progress_activity</span>
+            </div>
+            <span class="px-2 py-0.5 bg-black text-white font-mono font-bold text-xs uppercase mb-1">EVIDENCE EXTRACTION</span>
+            <h3 class="font-display font-extrabold text-lg uppercase">Synthesizing Technical Implementation Architecture</h3>
+            <p class="font-mono text-xs text-neutral-700 mt-1 max-w-md">Extracting verified dataset, neural backbones, compute profiles, and software dependencies from selected research...</p>
+          </div>
+        `;
+      }
+
+      let targetPaperIds = (paperIds && paperIds.length > 0) ? paperIds : Array.from(selectedPaperIdsForArch);
+      let targetDocs = [];
+
+      if (targetPaperIds.length === 0 && currentSearchResults.length > 0) {
+        const defaultDoc = currentSearchResults[selectedPaperIndex] || currentSearchResults[0];
+        const defaultId = defaultDoc.internal_id || defaultDoc.paper_id;
+        if (defaultId) {
+          targetPaperIds = [defaultId];
+          selectedPaperIdsForArch.add(defaultId);
+        }
+      }
+
+      currentSearchResults.forEach(doc => {
+        const docId = doc.internal_id || doc.paper_id;
+        if (targetPaperIds.includes(docId)) {
+          targetDocs.push(doc);
+        }
+      });
+
+      const payload = {
+        paper_ids: targetPaperIds,
+        query: currentSearchQuery || undefined,
+        constraints: constraints || archConstraints,
+        documents: targetDocs.length > 0 ? targetDocs : undefined
+      };
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/v1/architecture`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) {
+          throw new Error(`Backend returned HTTP ${res.status}: ${res.statusText}`);
+        }
+        const data = await res.json();
+        currentArchitecture = data;
+        renderArchitecture(data);
+        updateArchSelectedPills();
+      } catch (err) {
+        console.error('Architecture generation error:', err);
+        if (stagesGrid) {
+          stagesGrid.innerHTML = `
+            <div class="col-span-full p-8 bg-white border-2 border-black border-t-[6px] border-t-brutalCoral text-center">
+              <span class="px-2 py-0.5 bg-brutalCoral text-white font-mono font-bold text-xs uppercase mb-2 inline-block">SYNTHESIS FAILED</span>
+              <h3 class="font-display font-extrabold text-lg uppercase">Architecture Extraction Error</h3>
+              <p class="font-mono text-xs text-neutral-800 max-w-md mx-auto mt-1 mb-4">${escapeHtml(err.message)}</p>
+              <button class="brutal-btn px-4 py-2 bg-brutalYellow font-mono font-bold text-xs uppercase" onclick="reSynthesizeArchitecture()">RETRY SYNTHESIS</button>
+            </div>
+          `;
+        }
+      }
+    }
+
+    function renderArchitecture(data) {
+      if (!data || !data.architecture) return;
+      const arch = data.architecture;
+
+      // Update header badges
+      const countBadge = document.getElementById('arch-selection-count-badge');
+      const envBadge = document.getElementById('arch-env-badge');
+      const viewTitle = document.getElementById('arch-view-title');
+      const viewSubtitle = document.getElementById('arch-view-subtitle');
+
+      const paperCount = data.selected_paper_ids ? data.selected_paper_ids.length : 1;
+      if (countBadge) countBadge.textContent = `${paperCount} PAPER${paperCount > 1 ? 'S' : ''} GROUNDED`;
+      if (envBadge) {
+        const envName = (data.constraints_applied?.target_environment || archConstraints.target_environment || 'cloud').toUpperCase();
+        const vramNum = data.constraints_applied?.max_gpu_memory_gb || archConstraints.max_gpu_memory_gb || 24;
+        envBadge.textContent = `ENV: ${envName} • ${vramNum}GB VRAM`;
+      }
+      if (viewTitle) viewTitle.textContent = data.title || 'Concrete Research Implementation Architecture';
+      if (viewSubtitle) {
+        viewSubtitle.textContent = `Directly compiled from verified evidence across ${paperCount} selected paper${paperCount > 1 ? 's' : ''}. Verified facts, inferred requirements, and unknowns are rigorously segregated.`;
+      }
+
+      // Render Multi-Paper Compatibility & Conflict Analysis Banner
+      const compatCard = document.getElementById('arch-compatibility-card');
+      if (compatCard) {
+        const comp = data.compatibility || { is_compatible: true, compatibility_score: 1.0, compatible_points: [], conflicts: [] };
+        if (paperCount > 1 || comp.conflicts.length > 0) {
+          compatCard.classList.remove('hidden');
+          const hasConflicts = comp.conflicts && comp.conflicts.length > 0;
+          const bannerBg = hasConflicts ? 'bg-brutalCoral text-white' : 'bg-brutalLime text-black';
+          const scorePct = Math.round((comp.compatibility_score || 1.0) * 100);
+
+          let pointsHtml = '';
+          if (comp.compatible_points && comp.compatible_points.length > 0) {
+            pointsHtml = `
+              <div class="mt-2 text-xs font-mono space-y-1">
+                <span class="font-bold uppercase tracking-wider block text-neutral-800">COMPATIBLE INTEGRATIONS &amp; SYNERGIES:</span>
+                ${comp.compatible_points.map(p => `<div class="flex items-start gap-1.5"><span class="font-bold text-green-700">✓</span> <span>${escapeHtml(p)}</span></div>`).join('')}
+              </div>
+            `;
+          }
+
+          let conflictsHtml = '';
+          if (hasConflicts) {
+            conflictsHtml = `
+              <div class="mt-2.5 p-3 bg-red-100 border-2 border-black text-black text-xs font-mono space-y-1">
+                <span class="font-extrabold uppercase tracking-wider block text-red-700">DETECTED CONFLICTS / INCOMPATIBILITIES:</span>
+                ${comp.conflicts.map(c => `<div class="flex items-start gap-1.5"><span class="font-extrabold text-red-600">⚠</span> <span>${escapeHtml(c)}</span></div>`).join('')}
+              </div>
+            `;
+          }
+
+          compatCard.innerHTML = `
+            <div class="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_#000000]">
+              <div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-black">
+                <div class="flex items-center gap-2">
+                  <span class="px-2 py-0.5 ${bannerBg} border border-black font-mono font-bold text-xs uppercase">
+                    ${hasConflicts ? 'CONFLICTS DETECTED' : 'HIGH COMPATIBILITY'} (${scorePct}%)
+                  </span>
+                  <span class="font-display font-extrabold text-sm uppercase">Multi-Paper Synthesis Feasibility Analysis</span>
+                </div>
+                <span class="font-mono text-xs text-neutral-600">${paperCount} PAPERS COMBINED</span>
+              </div>
+              ${pointsHtml}
+              ${conflictsHtml}
+            </div>
+          `;
+        } else {
+          compatCard.classList.add('hidden');
+        }
+      }
+
+      // Render 10 Pipeline Stages
+      const stagesGrid = document.getElementById('arch-pipeline-stages-grid');
+      if (stagesGrid && arch.components) {
+        stagesGrid.innerHTML = arch.components.map((comp, idx) => {
+          const st = (comp.status || 'inferred').toLowerCase();
+          let stBadge = '<span class="px-1.5 py-0.5 bg-neutral-200 border border-black text-[10px] font-mono font-bold text-neutral-800">? UNKNOWN</span>';
+          let borderAccent = 'border-l-4 border-l-neutral-400';
+          if (st === 'verified') {
+            stBadge = '<span class="px-1.5 py-0.5 bg-brutalLime border border-black text-[10px] font-mono font-bold text-black">✓ VERIFIED</span>';
+            borderAccent = 'border-l-4 border-l-brutalLime';
+          } else if (st === 'inferred') {
+            stBadge = '<span class="px-1.5 py-0.5 bg-brutalYellow border border-black text-[10px] font-mono font-bold text-black">~ INFERRED</span>';
+            borderAccent = 'border-l-4 border-l-brutalYellow';
+          }
+
+          const confPct = Math.round((comp.confidence || 0.8) * 100);
+
+          let detailsHtml = '';
+          if (comp.details && Object.keys(comp.details).length > 0) {
+            const detailItems = Object.entries(comp.details).slice(0, 3).map(([k, v]) => {
+              return `<div class="truncate"><span class="text-neutral-500">${k}:</span> <span class="font-bold">${typeof v === 'object' ? JSON.stringify(v) : v}</span></div>`;
+            }).join('');
+            detailsHtml = `<div class="mt-2 pt-2 border-t border-dashed border-neutral-300 text-[10px] font-mono">${detailItems}</div>`;
+          }
+
+          return `
+            <div class="brutal-card p-4 bg-white flex flex-col justify-between gap-3 ${borderAccent}">
+              <div>
+                <div class="flex items-center justify-between gap-1 mb-1.5">
+                  <span class="text-[9px] font-mono font-extrabold uppercase bg-black text-white px-1">STAGE ${idx + 1}</span>
+                  <span class="text-[9px] font-mono font-bold text-neutral-600">${confPct}% CONF</span>
+                </div>
+                <div class="font-mono font-bold text-[10px] uppercase text-neutral-600 tracking-wider mb-0.5">
+                  ${escapeHtml(comp.component)}
+                </div>
+                <h4 class="font-display font-extrabold text-sm uppercase text-black leading-tight break-words">
+                  ${escapeHtml(comp.value)}
+                </h4>
+                <div class="mt-2 flex flex-wrap items-center gap-1">
+                  ${stBadge}
+                  ${comp.technologies && comp.technologies.length > 0 ? comp.technologies.map(t => `<span class="px-1.5 py-0.5 bg-paper border border-black text-[9px] font-mono font-bold">${escapeHtml(t)}</span>`).join('') : ''}
+                </div>
+              </div>
+              <div>
+                <div class="text-[10px] font-mono text-neutral-700 bg-[#FAF8EE] p-2 border border-black mt-2 leading-relaxed italic break-words">
+                  "${escapeHtml(comp.evidence)}"
+                </div>
+                ${comp.evidence_source ? `
+                  <div class="mt-1 text-[9px] font-mono text-neutral-600 bg-white p-1 border border-neutral-300 truncate" title="${escapeHtml(comp.evidence_source)}">
+                    <span class="font-bold">PROVENANCE:</span> ${escapeHtml(comp.evidence_source)}
+                  </div>
+                ` : ''}
+                ${comp.source_paper ? `
+                  <div class="mt-1 text-[9px] font-mono text-neutral-500 truncate" title="${escapeHtml(comp.source_paper)}">
+                    Source: ${escapeHtml(comp.source_paper)}
+                  </div>
+                ` : ''}
+                ${detailsHtml}
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Render Hardware Requirements
+      const hwBadge = document.getElementById('arch-hw-count-badge');
+      const hwList = document.getElementById('arch-hardware-list');
+      if (hwList && arch.hardware) {
+        if (hwBadge) hwBadge.textContent = `${arch.hardware.length} REQUIREMENTS`;
+        hwList.innerHTML = arch.hardware.map(hw => {
+          const st = (hw.status || 'inferred').toLowerCase();
+          const badgeClass = st === 'verified' ? 'bg-brutalLime text-black' : (st === 'inferred' ? 'bg-brutalYellow text-black' : 'bg-neutral-200 text-black');
+          return `
+            <div class="p-3 bg-white border-2 border-black shadow-[2px_2px_0px_#000000] flex flex-col gap-1.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="font-display font-extrabold text-xs uppercase">${escapeHtml(hw.category)}</span>
+                <span class="px-1.5 py-0.5 ${badgeClass} border border-black text-[10px] font-mono font-bold uppercase">${escapeHtml(st)}</span>
+              </div>
+              <div class="font-mono font-bold text-xs text-neutral-900">${escapeHtml(hw.requirement)}</div>
+              <div class="text-[10px] font-mono text-neutral-600 italic">"${escapeHtml(hw.evidence)}"</div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Render Software Dependencies
+      const depsBadge = document.getElementById('arch-deps-count-badge');
+      const depsList = document.getElementById('arch-dependencies-list');
+      if (depsList && arch.dependencies) {
+        if (depsBadge) depsBadge.textContent = `${arch.dependencies.length} PACKAGES`;
+        depsList.innerHTML = arch.dependencies.map(dep => {
+          const st = (dep.status || 'inferred').toLowerCase();
+          const badgeClass = st === 'verified' ? 'bg-brutalLime text-black' : (st === 'inferred' ? 'bg-brutalYellow text-black' : 'bg-neutral-200 text-black');
+          return `
+            <div class="p-3 bg-white border-2 border-black shadow-[2px_2px_0px_#000000] flex flex-col gap-1.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="font-mono font-bold text-xs text-black">${escapeHtml(dep.name)} <span class="text-neutral-500 font-normal">(${escapeHtml(dep.version_spec || 'latest')})</span></span>
+                <span class="px-1.5 py-0.5 ${badgeClass} border border-black text-[10px] font-mono font-bold uppercase">${escapeHtml(st)}</span>
+              </div>
+              <div class="flex items-center gap-2 text-[10px] font-mono">
+                <span class="bg-[#FAF8EE] px-1.5 py-0.5 border border-black">${escapeHtml(dep.category || 'runtime')}</span>
+                ${dep.license ? `<span class="bg-brutalCyan px-1.5 py-0.5 border border-black font-bold">${escapeHtml(dep.license)}</span>` : ''}
+              </div>
+              <div class="text-[10px] font-mono text-neutral-600 italic truncate" title="${escapeHtml(dep.evidence)}">"${escapeHtml(dep.evidence)}"</div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Render Connections
+      const connBadge = document.getElementById('arch-connections-count-badge');
+      const connTbody = document.getElementById('arch-connections-tbody');
+      if (connTbody && arch.connections) {
+        if (connBadge) connBadge.textContent = `${arch.connections.length} DATA FLOW EDGES`;
+        connTbody.innerHTML = arch.connections.map(conn => {
+          return `
+            <tr class="hover:bg-cream border-b border-black">
+              <td class="p-2.5 font-bold border-r border-black uppercase">${escapeHtml(conn.source)}</td>
+              <td class="p-2.5 font-bold border-r border-black uppercase">${escapeHtml(conn.target)}</td>
+              <td class="p-2.5 border-r border-black font-sans text-neutral-800 text-[11px]">${escapeHtml(conn.description)}</td>
+              <td class="p-2.5 font-mono font-bold text-neutral-900 bg-[#FAF8EE]">${escapeHtml(conn.data_flow)}</td>
+            </tr>
+          `;
+        }).join('');
+      }
+    }
+
+    // ==========================================
+    // ACTIONABLE IMPLEMENTATION ROADMAP ENGINE
+    // ==========================================
+
+    function toggleRoadmapConstraint(constraintKey) {
+      if (roadmapConstraints[constraintKey] !== undefined) {
+        roadmapConstraints[constraintKey] = !roadmapConstraints[constraintKey];
+        if (constraintKey === 'limited_gpu') {
+          roadmapConstraints.max_gpu_memory_gb = roadmapConstraints.limited_gpu ? 8 : 24;
+        }
+      }
+
+      // Update button visual state
+      const btnMap = {
+        'limited_gpu': 'btn-rm-const-gpu',
+        'limited_time': 'btn-rm-const-time',
+        'public_datasets_only': 'btn-rm-const-public',
+        'open_source_only': 'btn-rm-const-oss'
+      };
+      const btnId = btnMap[constraintKey];
+      if (btnId) {
+        const btn = document.getElementById(btnId);
+        if (btn) {
+          if (roadmapConstraints[constraintKey]) {
+            btn.className = 'px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-black text-white shadow-[2px_2px_0px_#000000] transition-all';
+          } else {
+            btn.className = 'px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-white hover:bg-cream text-black shadow-[1.5px_1.5px_0px_#000000] transition-all';
+          }
+        }
+      }
+
+      fetchRoadmap(Array.from(selectedPaperIdsForRoadmap), roadmapConstraints);
+    }
+
+    function cyclePhaseStatus(phaseNum) {
+      const current = roadmapPhaseStatus[phaseNum] || 'planned';
+      let next = 'planned';
+      if (current === 'planned') next = 'in_progress';
+      else if (current === 'in_progress') next = 'completed';
+      else next = 'planned';
+
+      roadmapPhaseStatus[phaseNum] = next;
+
+      // Update badge on phase card
+      const pill = document.getElementById(`rm-phase-status-pill-${phaseNum}`);
+      if (pill) {
+        let badgeClass = 'bg-neutral-200 text-black border border-black';
+        let label = 'PLANNED';
+        if (next === 'in_progress') {
+          badgeClass = 'bg-brutalYellow text-black border border-black animate-pulse';
+          label = 'IN PROGRESS';
+        } else if (next === 'completed') {
+          badgeClass = 'bg-brutalLime text-black border border-black';
+          label = 'COMPLETED ✓';
+        }
+        pill.className = `px-2 py-0.5 ${badgeClass} text-[10px] font-mono font-bold uppercase cursor-pointer hover:opacity-80 transition-all`;
+        pill.textContent = label;
+      }
+
+      // Update card left border highlight
+      const card = document.getElementById(`rm-phase-card-${phaseNum}`);
+      if (card) {
+        card.classList.remove('border-l-neutral-400', 'border-l-brutalYellow', 'border-l-brutalLime');
+        if (next === 'completed') {
+          card.classList.add('border-l-brutalLime');
+        } else if (next === 'in_progress') {
+          card.classList.add('border-l-brutalYellow');
+        } else {
+          card.classList.add('border-l-neutral-400');
+        }
+      }
+
+      updateRoadmapProgressWidget();
+    }
+
+    function updateRoadmapProgressWidget() {
+      let completedCount = 0;
+      let inProgressCount = 0;
+
+      for (let i = 1; i <= 8; i++) {
+        const st = roadmapPhaseStatus[i] || 'planned';
+        const seg = document.getElementById(`rm-prog-seg-${i}`);
+        if (seg) {
+          seg.className = 'border border-black/40 h-full transition-colors';
+          if (st === 'completed') {
+            seg.classList.add('bg-brutalLime');
+            completedCount++;
+          } else if (st === 'in_progress') {
+            seg.classList.add('bg-brutalYellow');
+            inProgressCount++;
+          } else {
+            seg.classList.add('bg-neutral-200');
+          }
+        }
+      }
+
+      const label = document.getElementById('roadmap-progress-label');
+      if (label) {
+        const pct = Math.round((completedCount / 8) * 100);
+        label.textContent = `${completedCount}/8 PHASES (${pct}%) • ${inProgressCount} ACTIVE`;
+      }
+    }
+
+    function synthesizeRoadmapForPaper(idx) {
+      if (idx >= 0 && idx < currentSearchResults.length) {
+        const paper = currentSearchResults[idx];
+        const docId = paper.internal_id || paper.paper_id;
+        selectedPaperIdsForRoadmap.clear();
+        if (docId) selectedPaperIdsForRoadmap.add(docId);
+        selectedPaperIndex = idx;
+        switchTab('tab-roadmap');
+        fetchRoadmap([docId], roadmapConstraints);
+      }
+    }
+
+    function synthesizeRoadmapFromArchitecture() {
+      switchTab('tab-roadmap');
+      const archPaperIds = selectedPaperIdsForArch.size > 0
+        ? Array.from(selectedPaperIdsForArch)
+        : (currentArchitecture?.selected_paper_ids || []);
+      selectedPaperIdsForRoadmap.clear();
+      archPaperIds.forEach(id => selectedPaperIdsForRoadmap.add(id));
+      fetchRoadmap(archPaperIds, roadmapConstraints);
+    }
+
+    function reSynthesizeRoadmap() {
+      fetchRoadmap(Array.from(selectedPaperIdsForRoadmap), roadmapConstraints);
+    }
+
+    async function fetchRoadmap(paperIds = null, constraints = null) {
+      const grid = document.getElementById('roadmap-phases-grid');
+      if (grid) {
+        grid.innerHTML = `
+          <div class="col-span-full p-10 bg-white border-2 border-black flex flex-col items-center justify-center text-center">
+            <div class="w-12 h-12 bg-brutalLime border-2 border-black animate-spin flex items-center justify-center mb-3 shadow-[3px_3px_0px_#000000]">
+              <span class="material-symbols-outlined text-2xl font-bold">route</span>
+            </div>
+            <span class="px-2 py-0.5 bg-black text-white font-mono font-bold text-xs uppercase mb-1">ROADMAP SYNTHESIS</span>
+            <h3 class="font-display font-extrabold text-lg uppercase">Generating 8-Phase Implementation Roadmap</h3>
+            <p class="font-mono text-xs text-neutral-700 mt-1 max-w-md">Grounding phased engineering plan in verified datasets, models, compute budgets, and buildability evidence...</p>
+          </div>
+        `;
+      }
+
+      let targetPaperIds = (paperIds && paperIds.length > 0) ? paperIds : Array.from(selectedPaperIdsForRoadmap);
+      let targetDocs = [];
+
+      if (targetPaperIds.length === 0 && currentSearchResults.length > 0) {
+        if (selectedPaperIdsForArch.size > 0) {
+          targetPaperIds = Array.from(selectedPaperIdsForArch);
+        } else {
+          const defaultDoc = currentSearchResults[selectedPaperIndex] || currentSearchResults[0];
+          const defaultId = defaultDoc.internal_id || defaultDoc.paper_id;
+          if (defaultId) {
+            targetPaperIds = [defaultId];
+          }
+        }
+      }
+
+      currentSearchResults.forEach(doc => {
+        const docId = doc.internal_id || doc.paper_id;
+        if (targetPaperIds.includes(docId)) {
+          targetDocs.push(doc);
+        }
+      });
+
+      const effectiveConstraints = constraints || roadmapConstraints;
+      const payload = {
+        paper_ids: targetPaperIds,
+        architecture: currentArchitecture ? (currentArchitecture.architecture || currentArchitecture) : undefined,
+        constraints: effectiveConstraints,
+        documents: targetDocs.length > 0 ? targetDocs : undefined,
+        query: currentSearchQuery || undefined
+      };
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/v1/roadmap`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) {
+          throw new Error(`Backend returned HTTP ${res.status}: ${res.statusText}`);
+        }
+        const data = await res.json();
+        currentRoadmap = data;
+        renderRoadmap(data);
+      } catch (err) {
+        console.error('Roadmap generation error:', err);
+        if (grid) {
+          grid.innerHTML = `
+            <div class="col-span-full p-8 bg-white border-2 border-black border-t-[6px] border-t-brutalCoral text-center">
+              <span class="px-2 py-0.5 bg-brutalCoral text-white font-mono font-bold text-xs uppercase mb-2 inline-block">SYNTHESIS FAILED</span>
+              <h3 class="font-display font-extrabold text-lg uppercase">Roadmap Generation Error</h3>
+              <p class="font-mono text-xs text-neutral-800 max-w-md mx-auto mt-1 mb-4">${escapeHtml(err.message)}</p>
+              <button class="brutal-btn px-4 py-2 bg-brutalYellow font-mono font-bold text-xs uppercase" onclick="reSynthesizeRoadmap()">RETRY SYNTHESIS</button>
+            </div>
+          `;
+        }
+      }
+    }
+
+    function renderRoadmap(data) {
+      if (!data) return;
+      const phases = data.phases || [];
+
+      // Initialize phase status if not set
+      phases.forEach(p => {
+        if (!roadmapPhaseStatus[p.phase]) {
+          roadmapPhaseStatus[p.phase] = p.status || 'planned';
+        }
+      });
+
+      // Update header badges
+      const countBadge = document.getElementById('roadmap-papers-count-badge');
+      const durBadge = document.getElementById('roadmap-duration-badge');
+      const viewTitle = document.getElementById('roadmap-view-title');
+      const viewSubtitle = document.getElementById('roadmap-view-subtitle');
+      const hashBadge = document.getElementById('roadmap-arch-hash-badge');
+      const paperCount = (data.selected_paper_ids && data.selected_paper_ids.length > 0) ? data.selected_paper_ids.length : 1;
+
+      if (countBadge) countBadge.textContent = `${paperCount} PAPER${paperCount > 1 ? 'S' : ''} GROUNDED`;
+      if (durBadge) durBadge.textContent = data.total_estimated_duration || '2-3 WEEKS';
+      if (viewTitle) viewTitle.textContent = data.title || '8-Phase Implementation Roadmap Matrix';
+      if (viewSubtitle) {
+        viewSubtitle.textContent = data.summary || `Actionable, evidence-grounded implementation roadmap directly compiled from ${paperCount} selected research paper(s).`;
+      }
+      if (hashBadge) {
+        const shortHash = data.architecture_hash ? data.architecture_hash.substring(0, 10).toUpperCase() : 'LIVE';
+        hashBadge.textContent = `HASH: ${shortHash}`;
+        hashBadge.title = `Full Architecture Fingerprint: ${data.architecture_hash || 'N/A'}`;
+      }
+
+      // Update Selected Papers list
+      const papersListEl = document.getElementById('roadmap-selected-papers-list');
+      if (papersListEl) {
+        if (data.selected_paper_ids && data.selected_paper_ids.length > 0) {
+          papersListEl.innerHTML = data.selected_paper_ids.map(id => {
+            const matched = currentSearchResults.find(d => (d.internal_id || d.paper_id) === id);
+            const title = matched ? matched.title : id;
+            return `
+              <span class="px-2 py-0.5 bg-paper border border-black font-mono text-[11px] font-bold flex items-center gap-1">
+                <span class="w-1.5 h-1.5 bg-brutalLime inline-block"></span>
+                <span class="truncate max-w-[200px]" title="${escapeHtml(title)}">${escapeHtml(title)}</span>
+              </span>
+            `;
+          }).join('');
+        } else {
+          papersListEl.innerHTML = '<span class="font-mono text-xs text-neutral-500 italic">Grounding in primary search corpus.</span>';
+        }
+      }
+
+      // Update Dependency Flow Badges
+      const flowContainer = document.getElementById('roadmap-dependency-flow-badges');
+      const transBadge = document.getElementById('roadmap-transitions-count-badge');
+      if (flowContainer && data.dependency_graph) {
+        if (transBadge) transBadge.textContent = `${data.dependency_graph.length} TRANSITIONS`;
+        flowContainer.innerHTML = data.dependency_graph.map(edge => {
+          return `
+            <div class="px-2 py-1 bg-[#FAF8EE] border border-black flex items-center gap-1.5 text-[11px]" title="${escapeHtml(edge.reason || '')}">
+              <span class="font-extrabold text-black">P${edge.from_phase}</span>
+              <span class="text-neutral-500">&rarr;</span>
+              <span class="font-extrabold text-black">P${edge.to_phase}</span>
+              <span class="text-[9px] text-neutral-600 truncate max-w-[140px]">(${escapeHtml(edge.reason || 'dependency')})</span>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Render 8 Phases Grid
+      const grid = document.getElementById('roadmap-phases-grid');
+      if (grid && phases.length > 0) {
+        grid.innerHTML = phases.map(phase => {
+          const st = roadmapPhaseStatus[phase.phase] || phase.status || 'planned';
+          let borderAccent = 'border-l-4 border-l-neutral-400';
+          let stBadgeClass = 'bg-neutral-200 text-black border border-black';
+          let stLabel = 'PLANNED';
+
+          if (st === 'completed') {
+            borderAccent = 'border-l-4 border-l-brutalLime';
+            stBadgeClass = 'bg-brutalLime text-black border border-black';
+            stLabel = 'COMPLETED ✓';
+          } else if (st === 'in_progress') {
+            borderAccent = 'border-l-4 border-l-brutalYellow';
+            stBadgeClass = 'bg-brutalYellow text-black border border-black animate-pulse';
+            stLabel = 'IN PROGRESS';
+          }
+
+          // Difficulty badge styling
+          const diff = (phase.estimated_difficulty || 'Medium').toLowerCase();
+          let diffClass = 'bg-brutalYellow text-black';
+          if (diff.includes('low')) diffClass = 'bg-brutalLime text-black';
+          else if (diff.includes('high') || diff.includes('critical')) diffClass = 'bg-brutalCoral text-white';
+
+          // Tasks list
+          let tasksHtml = '';
+          if (phase.task_items && phase.task_items.length > 0) {
+            tasksHtml = `
+              <div class="mt-2.5 space-y-1.5 text-[11px] font-mono">
+                <span class="font-bold uppercase tracking-wider block text-neutral-800 text-[10px]">ENGINEERING TASKS &amp; DELIVERABLES:</span>
+                ${phase.task_items.map(t => {
+                  const evSt = (t.evidence_status || 'INFERRED').toUpperCase();
+                  const evClass = evSt === 'VERIFIED' ? 'bg-brutalLime text-black' : (evSt === 'UNKNOWN' ? 'bg-neutral-200 text-neutral-800' : 'bg-brutalYellow text-black');
+                  return `
+                    <div class="p-2.5 bg-[#FAF8EE] border border-black flex flex-col gap-1.5 shadow-[1px_1px_0px_#000000]">
+                      <div class="flex items-center justify-between gap-1">
+                        <span class="font-bold text-neutral-900 leading-tight text-xs">${escapeHtml(t.task)}</span>
+                        <span class="px-1.5 py-0.5 border border-black text-[9px] font-mono font-bold ${evClass}">${evSt}</span>
+                      </div>
+                      ${t.description ? `<p class="text-[10px] text-neutral-600 font-sans leading-tight">${escapeHtml(t.description)}</p>` : ''}
+                      <div class="flex flex-wrap items-center gap-1 mt-0.5 text-[9px]">
+                        ${t.technology ? `<span class="bg-white px-1 border border-black font-mono">TECH: ${escapeHtml(t.technology)}</span>` : ''}
+                        ${t.dependency && t.dependency !== 'None' ? `<span class="bg-cream px-1 border border-neutral-400 font-mono">DEP: ${escapeHtml(t.dependency)}</span>` : ''}
+                        ${t.difficulty ? `<span class="bg-neutral-100 px-1 border border-neutral-400 font-bold font-mono">DIFF: ${escapeHtml(t.difficulty)}</span>` : ''}
+                        ${t.input ? `<span class="bg-[#F0EDE1] px-1 border border-neutral-400 font-mono truncate max-w-[180px]" title="${escapeHtml(t.input)}">IN: ${escapeHtml(t.input)}</span>` : ''}
+                        ${t.output ? `<span class="bg-[#F0EDE1] px-1 border border-neutral-400 font-mono truncate max-w-[180px]" title="${escapeHtml(t.output)}">OUT: ${escapeHtml(t.output)}</span>` : ''}
+                        ${t.supporting_papers && t.supporting_papers.length > 0 ? `<span class="bg-white px-1 border border-black font-semibold text-neutral-800 font-mono truncate max-w-[200px]" title="${escapeHtml(t.supporting_papers.join(', '))}">PAPER: ${escapeHtml(t.supporting_papers[0])}</span>` : ''}
+                        ${t.evidence_source ? `<span class="bg-white px-1 border border-neutral-400 text-neutral-600 font-mono truncate max-w-[180px]" title="${escapeHtml(t.evidence_source)}">EV: ${escapeHtml(t.evidence_source)}</span>` : ''}
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            `;
+          } else if (phase.tasks && phase.tasks.length > 0) {
+            tasksHtml = `
+              <div class="mt-2.5 space-y-1 text-[11px] font-mono">
+                <span class="font-bold uppercase tracking-wider block text-neutral-800 text-[10px]">TASKS / DELIVERABLES:</span>
+                ${phase.tasks.map(t => `<div class="flex items-start gap-1.5 leading-tight"><span class="text-neutral-500 font-bold">•</span><span class="text-neutral-900">${escapeHtml(t)}</span></div>`).join('')}
+              </div>
+            `;
+          }
+
+          // Dependencies pills
+          const depsHtml = (phase.dependencies && phase.dependencies.length > 0) ? `
+            <div class="mt-2 text-[10px] font-mono">
+              <span class="font-bold uppercase tracking-wider text-neutral-600">PREREQUISITES:</span>
+              <div class="flex flex-wrap gap-1 mt-0.5">
+                ${phase.dependencies.map(d => `<span class="bg-[#FAF8EE] border border-black px-1.5 py-0.5 text-[10px] font-bold text-neutral-800">${escapeHtml(d)}</span>`).join('')}
+              </div>
+            </div>
+          ` : '';
+
+          // Inputs & Outputs
+          const ioHtml = `
+            <div class="mt-2 pt-2 border-t border-dashed border-neutral-300 text-[10px] font-mono space-y-0.5">
+              ${phase.inputs && phase.inputs.length > 0 ? `<div class="truncate"><span class="text-neutral-500 font-bold">IN:</span> <span class="text-neutral-800">${escapeHtml(phase.inputs.join(', '))}</span></div>` : ''}
+              ${phase.outputs && phase.outputs.length > 0 ? `<div class="truncate"><span class="text-neutral-500 font-bold">OUT:</span> <span class="text-neutral-800">${escapeHtml(phase.outputs.join(', '))}</span></div>` : ''}
+            </div>
+          `;
+
+          // Evidence callout
+          const evidenceHtml = (phase.evidence && phase.evidence.length > 0) ? `
+            <div class="mt-2 text-[9px] font-mono text-neutral-700 bg-[#FAF8EE] p-2 border border-black leading-relaxed italic break-words">
+              "${escapeHtml(phase.evidence[0])}"
+            </div>
+          ` : '';
+
+          return `
+            <div class="brutal-card p-4 bg-white flex flex-col justify-between gap-3 ${borderAccent}" id="rm-phase-card-${phase.phase}">
+              <div>
+                <div class="flex items-center justify-between gap-1 mb-1.5">
+                  <span class="text-[9px] font-mono font-extrabold uppercase bg-black text-white px-1.5 py-0.5">PHASE ${phase.phase}</span>
+                  <span class="px-1.5 py-0.5 ${diffClass} border border-black text-[9px] font-mono font-extrabold uppercase">${escapeHtml(phase.estimated_difficulty || 'Medium')}</span>
+                </div>
+                <h4 class="font-display font-extrabold text-sm uppercase text-black leading-snug break-words mt-1">
+                  ${escapeHtml(phase.title)}
+                </h4>
+                <p class="font-body text-xs text-neutral-700 mt-1 leading-snug">
+                  ${escapeHtml(phase.description)}
+                </p>
+                ${tasksHtml}
+                ${depsHtml}
+                ${ioHtml}
+              </div>
+              <div>
+                ${evidenceHtml}
+                <div class="mt-3 pt-2 border-t border-black flex items-center justify-between gap-2">
+                  <span class="text-[9px] font-mono font-bold text-neutral-600 uppercase">STATUS:</span>
+                  <button id="rm-phase-status-pill-${phase.phase}" class="px-2 py-0.5 ${stBadgeClass} text-[10px] font-mono font-bold uppercase cursor-pointer hover:opacity-80 transition-all" onclick="cyclePhaseStatus(${phase.phase})" title="Click to advance status (Planned &rarr; In Progress &rarr; Completed)">
+                    ${stLabel}
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      updateRoadmapProgressWidget();
+    }
+
+    // =========================================================================
+    // RESEARCH GAP INTELLIGENCE & OPPORTUNITIES INTERACTIVITY
+    // =========================================================================
+
+    function filterResearchGaps(gapType) {
+      activeGapFilter = gapType;
+      const filterBtns = {
+        'all': 'btn-gap-filter-all',
+        'method': 'btn-gap-filter-method',
+        'dataset': 'btn-gap-filter-dataset',
+        'evaluation': 'btn-gap-filter-evaluation',
+        'application': 'btn-gap-filter-application',
+        'scalability': 'btn-gap-filter-scalability'
+      };
+
+      Object.entries(filterBtns).forEach(([k, btnId]) => {
+        const btn = document.getElementById(btnId);
+        if (btn) {
+          if (k === gapType) {
+            btn.className = 'px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-black text-white shadow-[1.5px_1.5px_0px_#000000] transition-all';
+          } else {
+            btn.className = 'px-2.5 py-1 text-xs font-mono font-bold border-2 border-black bg-white hover:bg-cream text-black shadow-[1.5px_1.5px_0px_#000000] transition-all';
+          }
+        }
+      });
+
+      applyGapFilter();
+    }
+
+    function applyGapFilter() {
+      const cards = document.querySelectorAll('.gap-card-item');
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const cardType = card.getAttribute('data-gap-type');
+        if (activeGapFilter === 'all' || cardType === activeGapFilter) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      const countEl = document.getElementById('gaps-visible-count');
+      if (countEl) {
+        countEl.textContent = `Showing ${visibleCount} of ${cards.length} potential gaps`;
+      }
+    }
+
+    function reAnalyzeResearchGaps() {
+      fetchResearchGaps();
+    }
+
+    function analyzeGapsForPaper(idx) {
+      if (idx >= 0 && idx < currentSearchResults.length) {
+        const paper = currentSearchResults[idx];
+        const docId = paper.internal_id || paper.paper_id;
+        selectedPaperIndex = idx;
+        switchTab('tab-gaps');
+        fetchResearchGaps(docId ? [docId] : null);
+      }
+    }
+
+    async function fetchResearchGaps(paperIds = null) {
+      const container = document.getElementById('gaps-cards-container');
+      if (container) {
+        container.innerHTML = `
+          <div class="p-10 bg-white border-2 border-black flex flex-col items-center justify-center text-center">
+            <div class="w-12 h-12 bg-brutalCyan border-2 border-black animate-spin flex items-center justify-center mb-3 shadow-[3px_3px_0px_#000000]">
+              <span class="material-symbols-outlined text-2xl font-bold">travel_explore</span>
+            </div>
+            <span class="px-2 py-0.5 bg-black text-white font-mono font-bold text-xs uppercase mb-1">ANALYZING COVERAGE &amp; LIMITATIONS</span>
+            <h3 class="font-display font-extrabold text-lg uppercase">Evaluating Research Landscape for Evidence-Backed Gaps</h3>
+            <p class="font-mono text-xs text-neutral-700 mt-1 max-w-md">Extracting method paradigms, benchmark coverage, conflicting findings, and recurring author-stated limitations across candidate set...</p>
+          </div>
+        `;
+      }
+
+      let targetPaperIds = (paperIds && paperIds.length > 0) ? paperIds : [];
+      let targetDocs = [];
+
+      if (targetPaperIds.length === 0 && currentSearchResults.length > 0) {
+        targetPaperIds = currentSearchResults.map(d => d.internal_id || d.paper_id).filter(Boolean);
+      }
+
+      currentSearchResults.forEach(doc => {
+        const docId = doc.internal_id || doc.paper_id;
+        if (targetPaperIds.length === 0 || targetPaperIds.includes(docId)) {
+          targetDocs.push(doc);
+        }
+      });
+
+      const payload = {
+        query: currentSearchQuery || undefined,
+        paper_ids: targetPaperIds.length > 0 ? targetPaperIds : undefined,
+        documents: targetDocs.length > 0 ? targetDocs : undefined
+      };
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/v1/research-gaps`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          throw new Error(`Backend returned HTTP ${res.status}: ${res.statusText}`);
+        }
+
+        const data = await res.json();
+        currentResearchGaps = data;
+        renderResearchGaps(data);
+      } catch (err) {
+        console.error('Research gaps analysis error:', err);
+        if (container) {
+          container.innerHTML = `
+            <div class="p-8 bg-white border-2 border-black border-t-[6px] border-t-brutalCoral text-center">
+              <span class="px-2 py-0.5 bg-brutalCoral text-white font-mono font-bold text-xs uppercase mb-2 inline-block">ANALYSIS FAILED</span>
+              <h3 class="font-display font-extrabold text-lg uppercase">Gap Intelligence Error</h3>
+              <p class="font-mono text-xs text-neutral-800 max-w-md mx-auto mt-1 mb-4">${escapeHtml(err.message)}</p>
+              <button class="brutal-btn px-4 py-2 bg-brutalYellow font-mono font-bold text-xs uppercase" onclick="fetchResearchGaps()">RETRY ANALYSIS</button>
+            </div>
+          `;
+        }
+      }
+    }
+
+    function renderResearchGaps(data) {
+      if (!data) return;
+
+      const candBadge = document.getElementById('gaps-candidate-count-badge');
+      const countBadge = document.getElementById('gaps-count-badge');
+      const railBadge = document.getElementById('rail-gaps-badge');
+      const scopeLabel = document.getElementById('gaps-scope-label');
+
+      const analyzedCount = data.candidate_papers_analyzed || data.total_candidates_analyzed || (data.landscape_summary ? data.landscape_summary.total_papers_analyzed : 0) || (data.analyzed_paper_ids ? data.analyzed_paper_ids.length : 0);
+      const gaps = data.potential_gaps || [];
+
+      if (candBadge) candBadge.textContent = `${analyzedCount} PAPER${analyzedCount === 1 ? '' : 'S'} ANALYZED`;
+      if (countBadge) countBadge.textContent = `${gaps.length} POTENTIAL GAP${gaps.length === 1 ? '' : 'S'} IDENTIFIED`;
+      if (railBadge) railBadge.textContent = `${gaps.length}`;
+      if (scopeLabel) scopeLabel.textContent = data.landscape_summary?.coverage_analysis_scope || data.scope_disclaimer || data.disclaimer || 'Limited evidence was found within the analyzed candidate set.';
+
+      // Render Landscape Summary
+      const methodsEl = document.getElementById('gaps-dominant-methods-list');
+      const datasetsEl = document.getElementById('gaps-dominant-datasets-list');
+      const limitsEl = document.getElementById('gaps-cited-limitations-list');
+
+      if (data.landscape_summary) {
+        const ls = data.landscape_summary;
+        if (methodsEl) {
+          if (ls.dominant_methods && ls.dominant_methods.length > 0) {
+            methodsEl.innerHTML = ls.dominant_methods.map(m => `
+              <span class="px-2 py-0.5 bg-white border border-black font-bold text-[11px] shadow-[1px_1px_0px_#000000]">
+                ${escapeHtml(m)}
+              </span>
+            `).join('');
+          } else {
+            methodsEl.innerHTML = '<span class="text-neutral-500 italic">No dominant methods detected.</span>';
+          }
+        }
+
+        if (datasetsEl) {
+          if (ls.dominant_datasets && ls.dominant_datasets.length > 0) {
+            datasetsEl.innerHTML = ls.dominant_datasets.map(d => `
+              <span class="px-2 py-0.5 bg-white border border-black font-bold text-[11px] shadow-[1px_1px_0px_#000000]">
+                ${escapeHtml(d)}
+              </span>
+            `).join('');
+          } else {
+            datasetsEl.innerHTML = '<span class="text-neutral-500 italic">No dominant benchmarks detected.</span>';
+          }
+        }
+
+        if (limitsEl) {
+          if (ls.frequently_cited_limitations && ls.frequently_cited_limitations.length > 0) {
+            limitsEl.innerHTML = ls.frequently_cited_limitations.map(lim => `
+              <div class="flex items-start gap-1.5 leading-snug">
+                <span class="text-neutral-500 font-bold">•</span>
+                <span class="text-neutral-800">${escapeHtml(lim)}</span>
+              </div>
+            `).join('');
+          } else {
+            limitsEl.innerHTML = '<span class="text-neutral-500 italic">No common limitations extracted yet.</span>';
+          }
+        }
+      }
+
+      // Render Gap Cards
+      const container = document.getElementById('gaps-cards-container');
+      if (!container) return;
+
+      if (gaps.length === 0) {
+        container.innerHTML = `
+          <div class="p-10 text-center text-xs font-mono text-neutral-600 bg-white border-2 border-black">
+            No distinct potential research gaps detected for this candidate set under current coverage criteria.
+          </div>
+        `;
+        return;
+      }
+
+      const typeColors = {
+        'method': { bg: 'bg-brutalYellow', border: 'border-l-brutalYellow', text: 'text-black' },
+        'dataset': { bg: 'bg-brutalLime', border: 'border-l-brutalLime', text: 'text-black' },
+        'evaluation': { bg: 'bg-brutalCoral', border: 'border-l-brutalCoral', text: 'text-white' },
+        'application': { bg: 'bg-brutalCyan', border: 'border-l-brutalCyan', text: 'text-black' },
+        'scalability': { bg: 'bg-brutalPurple', border: 'border-l-brutalPurple', text: 'text-black' }
+      };
+
+      container.innerHTML = gaps.map((gap, gIdx) => {
+        const gType = (gap.gap_type || 'method').toLowerCase();
+        const confPct = Math.round((gap.confidence || 0.75) * 100);
+        const col = typeColors[gType] || { bg: 'bg-black', border: 'border-l-black', text: 'text-white' };
+
+        // Supporting Papers Pills
+        let papersHtml = '';
+        if (gap.supporting_papers && gap.supporting_papers.length > 0) {
+          papersHtml = gap.supporting_papers.map(p => {
+            const paperIdx = currentSearchResults.findIndex(
+              doc => (doc.internal_id || doc.paper_id) === p.id || doc.title === p.title
+            );
+            return `
+              <div class="p-2 bg-white border border-black shadow-[1.5px_1.5px_0px_#000000] flex flex-col gap-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-display font-extrabold text-xs uppercase truncate max-w-[280px]" title="${escapeHtml(p.title)}">
+                    ${escapeHtml(p.title)}
+                  </span>
+                  ${paperIdx >= 0 ? `
+                    <button class="px-1.5 py-0.5 bg-black text-white font-mono text-[9px] font-bold uppercase hover:bg-brutalYellow hover:text-black" onclick="openPaperDetailsModal(${paperIdx})">
+                      INSPECT
+                    </button>
+                  ` : ''}
+                </div>
+                ${p.citation ? `<div class="text-[10px] font-mono text-neutral-600 truncate">${escapeHtml(p.citation)}</div>` : ''}
+                <div class="text-[10px] font-mono text-neutral-700 italic">"${escapeHtml(p.relevance_to_gap)}"</div>
+              </div>
+            `;
+          }).join('');
+        }
+
+        // Evidence quotes
+        let evidenceHtml = '';
+        if (gap.evidence && gap.evidence.length > 0) {
+          evidenceHtml = gap.evidence.map(ev => `
+            <div class="flex items-start gap-1.5 text-xs font-mono text-neutral-800 leading-relaxed bg-[#FAF8EE] p-2 border border-black">
+              <span class="font-bold text-neutral-500">§</span>
+              <span class="italic">"${escapeHtml(ev)}"</span>
+            </div>
+          `).join('');
+        }
+
+        return `
+          <div class="gap-card-item brutal-card p-5 md:p-6 bg-white flex flex-col gap-4 border-l-8 ${col.border}" data-gap-type="${escapeHtml(gType)}">
+            <!-- Header Strip -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b-2 border-black">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 ${col.bg} ${col.text} border border-black font-mono font-extrabold text-xs uppercase">
+                  ${escapeHtml(gType.toUpperCase())} GAP
+                </span>
+                <span class="px-2 py-0.5 bg-black text-white font-mono font-bold text-xs uppercase">
+                  ${confPct}% CONFIDENCE
+                </span>
+              </div>
+              <div class="text-[10px] font-mono font-bold text-neutral-600 uppercase">
+                ${escapeHtml(gap.coverage_context || 'CANDIDATE SET ANALYSIS')}
+              </div>
+            </div>
+
+            <!-- Title & Description -->
+            <div>
+              <h3 class="font-display font-extrabold text-xl md:text-2xl uppercase tracking-tight text-black">
+                ${escapeHtml(gap.title)}
+              </h3>
+              <p class="font-body text-xs md:text-sm text-neutral-800 mt-1 leading-relaxed">
+                ${escapeHtml(gap.description)}
+              </p>
+            </div>
+
+            <!-- Why It Appears -->
+            ${gap.why_it_appears ? `
+              <div class="p-3 bg-neutral-50 border-2 border-black text-xs font-mono">
+                <span class="font-bold uppercase tracking-wider block text-black text-[10px] mb-1">WHY THIS GAP EMERGES:</span>
+                <p class="text-neutral-800 leading-relaxed">${escapeHtml(gap.why_it_appears)}</p>
+              </div>
+            ` : ''}
+
+            <!-- Rigorous Separation: Empirical Observation vs AI Hypothesis -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <!-- Empirical Observation -->
+              <div class="p-3 bg-emerald-50 border-2 border-black flex flex-col gap-1 shadow-[2px_2px_0px_#000000]">
+                <div class="flex items-center gap-1.5">
+                  <span class="px-1.5 py-0.2 bg-emerald-700 text-white font-mono font-extrabold text-[9px] uppercase">
+                    EMPIRICAL OBSERVATION
+                  </span>
+                  <span class="text-[10px] font-mono text-emerald-900 font-bold">[VERIFIABLE IN CORPUS]</span>
+                </div>
+                <p class="text-xs font-mono text-neutral-900 mt-1 leading-relaxed">
+                  ${escapeHtml(gap.observation)}
+                </p>
+              </div>
+
+              <!-- AI-Generated Hypothesis -->
+              <div class="p-3 bg-amber-50 border-2 border-black flex flex-col gap-1 shadow-[2px_2px_0px_#000000]">
+                <div class="flex items-center gap-1.5">
+                  <span class="px-1.5 py-0.2 bg-amber-600 text-black font-mono font-extrabold text-[9px] uppercase">
+                    AI HYPOTHESIS
+                  </span>
+                  <span class="text-[10px] font-mono text-amber-900 font-bold">[INFERRED RESEARCH OPPORTUNITY]</span>
+                </div>
+                <p class="text-xs font-mono text-neutral-900 mt-1 leading-relaxed">
+                  ${escapeHtml(gap.hypothesis)}
+                </p>
+              </div>
+            </div>
+
+            <!-- Evidence Section -->
+            ${gap.evidence && gap.evidence.length > 0 ? `
+              <div class="flex flex-col gap-1.5">
+                <span class="font-mono font-bold text-[10px] uppercase text-neutral-700 tracking-wider">
+                  SUPPORTING EVIDENCE EXTRACTED FROM RETRIEVED MANUSCRIPTS:
+                </span>
+                <div class="space-y-1.5">
+                  ${evidenceHtml}
+                </div>
+              </div>
+            ` : ''}
+
+            <!-- Supporting Papers -->
+            ${gap.supporting_papers && gap.supporting_papers.length > 0 ? `
+              <div class="flex flex-col gap-1.5">
+                <span class="font-mono font-bold text-[10px] uppercase text-neutral-700 tracking-wider">
+                  GROUNDED IN PAPERS (${gap.supporting_papers.length}):
+                </span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  ${papersHtml}
+                </div>
+              </div>
+            ` : ''}
+
+            <!-- Actionable Research Opportunity Box -->
+            ${gap.possible_research_direction ? `
+              <div class="p-3.5 bg-brutalLime/20 border-2 border-black flex flex-col gap-1 shadow-[2px_2px_0px_#000000]">
+                <div class="flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-sm font-bold text-black" data-icon="lightbulb">lightbulb</span>
+                  <span class="font-display font-extrabold text-xs uppercase tracking-wide text-black">
+                    ACTIONABLE RESEARCH OPPORTUNITY &amp; EXPERIMENTAL DIRECTION
+                  </span>
+                </div>
+                <p class="font-mono text-xs text-black leading-relaxed font-semibold mt-0.5">
+                  ${escapeHtml(gap.possible_research_direction)}
+                </p>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join('');
+
+      applyGapFilter();
+    }
+
+    // ==========================================
+    // PAPER INTELLIGENCE ENGINE (ADD-ON ONLY)
+    // ==========================================
+
+    async function openPaperIntelligence(paperIndex) {
+      if (paperIndex < 0 || paperIndex >= currentSearchResults.length) return;
+      const paper = currentSearchResults[paperIndex];
+      const paperId = paper.internal_id || paper.paper_id || paper.source_id;
+
+      const modal = document.getElementById('modal-paper-intelligence');
+      if (modal) {
+        modal.classList.remove('hidden');
+      }
+
+      // If user switched to another paper, clear previous state immediately!
+      if (currentPaperIntelligencePaperId !== paperId || !currentPaperIntelligence) {
+        currentPaperIntelligence = null;
+        currentPaperIntelligencePaperId = paperId;
+        renderPaperIntelligenceLoading(paper);
+        await fetchPaperIntelligence(paper, paperId);
+      } else {
+        renderPaperIntelligence(currentPaperIntelligence);
+      }
+    }
+
+    function closePaperIntelligenceModal() {
+      const modal = document.getElementById('modal-paper-intelligence');
+      if (modal) {
+        modal.classList.add('hidden');
+      }
+    }
+
+    async function fetchPaperIntelligence(paper, paperId) {
+      paperIntelligenceLoading = true;
+      paperIntelligenceError = null;
+      try {
+        const payload = {
+          paper_id: paperId,
+          paper: paper
+        };
+        const res = await fetch(`${API_BASE_URL}/api/v1/paper-intelligence`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) {
+          throw new Error(`Backend returned HTTP ${res.status}: ${res.statusText}`);
+        }
+        const data = await res.json();
+        currentPaperIntelligence = data;
+        paperIntelligenceLoading = false;
+        renderPaperIntelligence(data);
+      } catch (err) {
+        console.error('Paper Intelligence Error:', err);
+        paperIntelligenceError = err.message;
+        paperIntelligenceLoading = false;
+        renderPaperIntelligenceError(err.message, paper, paperId);
+      }
+    }
+
+    function renderPaperIntelligenceLoading(paper) {
+      const titleEl = document.getElementById('pi-modal-title');
+      const idEl = document.getElementById('pi-modal-paper-id');
+      const bodyEl = document.getElementById('pi-modal-body');
+      const linkEl = document.getElementById('pi-modal-external-link');
+
+      if (titleEl) titleEl.textContent = paper.title || 'Paper Intelligence & Critique';
+      if (idEl) idEl.textContent = `ID: ${(paper.internal_id || paper.paper_id || 'N/A').substring(0, 14)}`;
+      if (linkEl) {
+        linkEl.href = paper.url || '#';
+        linkEl.style.display = paper.url ? 'inline-flex' : 'none';
+      }
+
+      if (bodyEl) {
+        bodyEl.innerHTML = `
+          <div class="p-10 bg-white border-2 border-black flex flex-col items-center justify-center text-center shadow-[3px_3px_0px_#000000]">
+            <div class="w-14 h-14 bg-brutalPink border-2 border-black animate-spin flex items-center justify-center mb-3 shadow-[3px_3px_0px_#000000]">
+              <span class="material-symbols-outlined text-2xl font-bold">psychology</span>
+            </div>
+            <span class="px-2 py-0.5 bg-black text-white font-mono font-bold text-xs uppercase mb-1">ANALYZING MANUSCRIPT EVIDENCE</span>
+            <h3 class="font-display font-extrabold text-lg uppercase">Extracting Deep Paper Intelligence</h3>
+            <p class="font-mono text-xs text-neutral-700 mt-1 max-w-md">
+              Evaluating problem formulation, methodology, benchmark datasets, author-stated and derived limitations, mitigations, and research gaps...
+            </p>
+          </div>
+        `;
+      }
+    }
+
+    function renderPaperIntelligenceError(errorMsg, paper, paperId) {
+      const bodyEl = document.getElementById('pi-modal-body');
+      if (bodyEl) {
+        bodyEl.innerHTML = `
+          <div class="p-8 bg-white border-2 border-black border-t-[6px] border-t-brutalCoral text-center">
+            <span class="px-2 py-0.5 bg-brutalCoral text-white font-mono font-bold text-xs uppercase mb-2 inline-block">ANALYSIS FAILED</span>
+            <h3 class="font-display font-extrabold text-lg uppercase">Paper Intelligence Synthesis Error</h3>
+            <p class="font-mono text-xs text-neutral-800 max-w-md mx-auto mt-1 mb-4">${escapeHtml(errorMsg)}</p>
+            <button class="brutal-btn px-4 py-2 bg-brutalYellow font-mono font-bold text-xs uppercase" onclick="fetchPaperIntelligence(currentSearchResults[selectedPaperIndex], '${escapeHtml(paperId)}')">RETRY ANALYSIS</button>
+          </div>
+        `;
+      }
+    }
+
+    function renderPaperIntelligence(data) {
+      if (!data) return;
+      const titleEl = document.getElementById('pi-modal-title');
+      const idEl = document.getElementById('pi-modal-paper-id');
+      const bodyEl = document.getElementById('pi-modal-body');
+      const statusBadge = document.getElementById('pi-modal-status-badge');
+
+      if (titleEl) titleEl.textContent = data.title || 'Paper Intelligence & Critique';
+      if (idEl) idEl.textContent = `ID: ${(data.paper_id || 'N/A').substring(0, 16)}`;
+      if (statusBadge) statusBadge.textContent = 'EVIDENCE-GROUNDED';
+
+      if (!bodyEl) return;
+
+      // 1. Paper Summary
+      const summaryHtml = `
+        <div class="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col gap-2">
+          <div class="flex items-center gap-1.5 border-b border-black pb-1.5">
+            <span class="px-2 py-0.5 bg-black text-white font-mono font-bold text-[10px] uppercase">SECTION 1</span>
+            <h3 class="font-display font-extrabold text-sm uppercase text-black">Paper Summary</h3>
+          </div>
+          <p class="font-body text-xs md:text-sm text-neutral-900 leading-relaxed font-medium">
+            ${escapeHtml(data.summary)}
+          </p>
+        </div>
+      `;
+
+      // 2. Research Problem
+      const problemHtml = `
+        <div class="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col gap-2">
+          <div class="flex items-center gap-1.5 border-b border-black pb-1.5">
+            <span class="px-2 py-0.5 bg-brutalCoral text-white font-mono font-bold text-[10px] uppercase">SECTION 2</span>
+            <h3 class="font-display font-extrabold text-sm uppercase text-black">Research Problem &amp; Challenge</h3>
+          </div>
+          <div class="p-3 bg-[#FAF8EE] border border-black text-xs font-mono font-semibold text-neutral-900 leading-relaxed">
+            ${escapeHtml(data.research_problem)}
+          </div>
+        </div>
+      `;
+
+      // 3. Dataset
+      const datasets = data.dataset || [];
+      const datasetHtml = `
+        <div class="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col gap-2">
+          <div class="flex items-center justify-between border-b border-black pb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="px-2 py-0.5 bg-brutalLime text-black font-mono font-bold text-[10px] uppercase">SECTION 3</span>
+              <h3 class="font-display font-extrabold text-sm uppercase text-black">Dataset &amp; Benchmark Grounding</h3>
+            </div>
+            <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1.5 py-0.5">${datasets.length} ITEM${datasets.length === 1 ? '' : 'S'}</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-1">
+            ${datasets.map(d => {
+              const st = (d.status || 'INFERRED').toUpperCase();
+              const badgeClass = st === 'VERIFIED' ? 'bg-brutalLime text-black' : (st === 'UNKNOWN' ? 'bg-neutral-200 text-neutral-800' : 'bg-brutalYellow text-black');
+              return `
+                <div class="p-2.5 bg-[#FAF8EE] border border-black flex flex-col gap-1 shadow-[1px_1px_0px_#000000]">
+                  <div class="flex items-center justify-between gap-1">
+                    <span class="font-display font-extrabold text-xs uppercase text-black">${escapeHtml(d.name)}</span>
+                    <span class="px-1.5 py-0.2 border border-black text-[9px] font-mono font-bold ${badgeClass}">${st}</span>
+                  </div>
+                  <div class="text-[11px] font-mono text-neutral-700 leading-tight">${escapeHtml(d.details)}</div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+
+      // 4. Methodology
+      const methods = data.methodology || [];
+      const methodologyHtml = `
+        <div class="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col gap-2">
+          <div class="flex items-center justify-between border-b border-black pb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="px-2 py-0.5 bg-brutalYellow text-black font-mono font-bold text-[10px] uppercase">SECTION 4</span>
+              <h3 class="font-display font-extrabold text-sm uppercase text-black">Methodology &amp; Algorithmic Pipeline</h3>
+            </div>
+            <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1.5 py-0.5">${methods.length} ITEM${methods.length === 1 ? '' : 'S'}</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-1">
+            ${methods.map(m => {
+              const st = (m.status || 'INFERRED').toUpperCase();
+              const badgeClass = st === 'VERIFIED' ? 'bg-brutalLime text-black' : (st === 'UNKNOWN' ? 'bg-neutral-200 text-neutral-800' : 'bg-brutalYellow text-black');
+              return `
+                <div class="p-2.5 bg-[#FAF8EE] border border-black flex flex-col gap-1 shadow-[1px_1px_0px_#000000]">
+                  <div class="flex items-center justify-between gap-1">
+                    <span class="font-display font-extrabold text-xs uppercase text-black">${escapeHtml(m.name)}</span>
+                    <span class="px-1.5 py-0.2 border border-black text-[9px] font-mono font-bold ${badgeClass}">${st}</span>
+                  </div>
+                  <div class="text-[11px] font-mono text-neutral-700 leading-tight">${escapeHtml(m.details)}</div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+
+      // 5. Model / Architecture
+      const models = data.model || [];
+      const modelHtml = `
+        <div class="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col gap-2">
+          <div class="flex items-center justify-between border-b border-black pb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="px-2 py-0.5 bg-brutalCyan text-black font-mono font-bold text-[10px] uppercase">SECTION 5</span>
+              <h3 class="font-display font-extrabold text-sm uppercase text-black">Model &amp; Backbone Architecture</h3>
+            </div>
+            <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1.5 py-0.5">${models.length} ITEM${models.length === 1 ? '' : 'S'}</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-1">
+            ${models.map(mo => {
+              const st = (mo.status || 'INFERRED').toUpperCase();
+              const badgeClass = st === 'VERIFIED' ? 'bg-brutalLime text-black' : (st === 'UNKNOWN' ? 'bg-neutral-200 text-neutral-800' : 'bg-brutalYellow text-black');
+              return `
+                <div class="p-2.5 bg-[#FAF8EE] border border-black flex flex-col gap-1 shadow-[1px_1px_0px_#000000]">
+                  <div class="flex items-center justify-between gap-1">
+                    <span class="font-display font-extrabold text-xs uppercase text-black">${escapeHtml(mo.name)}</span>
+                    <span class="px-1.5 py-0.2 border border-black text-[9px] font-mono font-bold ${badgeClass}">${st}</span>
+                  </div>
+                  <div class="text-[11px] font-mono text-neutral-700 leading-tight">${escapeHtml(mo.details)}</div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+
+      // 6. Key Results
+      const results = data.results || [];
+      const resultsHtml = `
+        <div class="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col gap-2">
+          <div class="flex items-center justify-between border-b border-black pb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="px-2 py-0.5 bg-black text-white font-mono font-bold text-[10px] uppercase">SECTION 6</span>
+              <h3 class="font-display font-extrabold text-sm uppercase text-black">Key Empirical Results</h3>
+            </div>
+            <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1.5 py-0.5">${results.length} FINDING${results.length === 1 ? '' : 'S'}</span>
+          </div>
+          <div class="space-y-2 mt-1">
+            ${results.map(r => `
+              <div class="p-2.5 bg-[#FAF8EE] border border-black flex items-start gap-2 shadow-[1px_1px_0px_#000000]">
+                <span class="material-symbols-outlined text-sm font-bold text-black mt-0.5" data-icon="verified">verified</span>
+                <div class="flex-1">
+                  <span class="font-display font-extrabold text-xs uppercase text-black block">${escapeHtml(r.name)}</span>
+                  <div class="text-xs font-mono text-neutral-800 leading-relaxed">${escapeHtml(r.details)}</div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      // 7. Limitations
+      const limitations = data.limitations || [];
+      const limitationsHtml = `
+        <div class="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col gap-2">
+          <div class="flex items-center justify-between border-b border-black pb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="px-2 py-0.5 bg-brutalCoral text-white font-mono font-bold text-[10px] uppercase">SECTION 7</span>
+              <h3 class="font-display font-extrabold text-sm uppercase text-black">Paper Limitations &amp; Critique</h3>
+            </div>
+            <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1.5 py-0.5">${limitations.length} IDENTIFIED</span>
+          </div>
+          <div class="space-y-2.5 mt-1">
+            ${limitations.map(lim => {
+              const lType = (lim.type || 'DERIVED').toUpperCase();
+              let typeBadgeBg = 'bg-brutalYellow text-black';
+              if (lType === 'EXPLICIT') typeBadgeBg = 'bg-brutalCoral text-white';
+              else if (lType === 'UNKNOWN') typeBadgeBg = 'bg-neutral-200 text-neutral-800';
+
+              const confPct = Math.round((lim.confidence || 0.8) * 100);
+
+              return `
+                <div class="p-3 bg-[#FAF8EE] border-2 border-black shadow-[2px_2px_0px_#000000] flex flex-col gap-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="px-2 py-0.5 border border-black text-[10px] font-mono font-bold uppercase ${typeBadgeBg}">
+                      ${lType} LIMITATION
+                    </span>
+                    <span class="text-[10px] font-mono font-bold text-neutral-700 bg-white px-1.5 py-0.2 border border-black">
+                      ${confPct}% CONF &bull; SOURCE: ${escapeHtml((lim.evidence_source || 'metadata').toUpperCase())}
+                    </span>
+                  </div>
+                  <div class="font-display font-extrabold text-xs text-black leading-tight">
+                    ${escapeHtml(lim.text)}
+                  </div>
+                  <div class="text-[11px] font-mono text-neutral-700 bg-white p-2 border border-neutral-300 italic leading-snug">
+                    "${escapeHtml(lim.evidence)}"
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+
+      // 8. How to Overcome (Mitigations)
+      const mitigations = data.mitigations || [];
+      const mitigationsHtml = `
+        <div class="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col gap-2">
+          <div class="flex items-center justify-between border-b border-black pb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="px-2 py-0.5 bg-brutalLime text-black font-mono font-bold text-[10px] uppercase">SECTION 8</span>
+              <h3 class="font-display font-extrabold text-sm uppercase text-black">How to Overcome (Actionable Mitigations)</h3>
+            </div>
+            <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1.5 py-0.5">${mitigations.length} RECOMMENDATIONS</span>
+          </div>
+          <div class="space-y-2.5 mt-1">
+            ${mitigations.map(mit => {
+              const isAuthor = mit.proposal_type === 'AUTHOR-PROPOSED';
+              const propBadgeClass = isAuthor
+                ? 'bg-brutalLime text-black font-extrabold'
+                : 'bg-black text-brutalYellow font-extrabold';
+
+              return `
+                <div class="p-3 bg-white border-2 border-black shadow-[2px_2px_0px_#000000] flex flex-col gap-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="px-2 py-0.5 border border-black text-[10px] font-mono uppercase ${propBadgeClass}">
+                      ${escapeHtml(mit.proposal_type)}
+                    </span>
+                    <span class="text-[10px] font-mono text-neutral-500 truncate max-w-[260px]">ADDRESSES: ${escapeHtml(mit.limitation_text)}</span>
+                  </div>
+                  <div class="font-mono text-xs font-bold text-neutral-900 leading-snug">
+                    ${escapeHtml(mit.recommendation)}
+                  </div>
+                  ${mit.rationale ? `
+                    <div class="text-[11px] font-sans text-neutral-700 bg-[#FAF8EE] p-2 border border-neutral-300 leading-tight">
+                      <strong>Rationale:</strong> ${escapeHtml(mit.rationale)}
+                    </div>
+                  ` : ''}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+
+      // 9. Research Gaps
+      const gaps = data.research_gaps || [];
+      const gapsHtml = `
+        <div class="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col gap-2">
+          <div class="flex items-center justify-between border-b border-black pb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="px-2 py-0.5 bg-brutalCyan text-black font-mono font-bold text-[10px] uppercase">SECTION 9</span>
+              <h3 class="font-display font-extrabold text-sm uppercase text-black">Evidence-Grounded Research Gaps</h3>
+            </div>
+            <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1.5 py-0.5">${gaps.length} GAPS</span>
+          </div>
+          <div class="space-y-2 mt-1">
+            ${gaps.map(g => `
+              <div class="p-3 bg-[#FAF8EE] border border-black shadow-[1.5px_1.5px_0px_#000000] flex flex-col gap-1">
+                <div class="flex items-center justify-between gap-1">
+                  <span class="text-xs font-mono font-bold text-black flex items-center gap-1.5">
+                    <span class="w-2 h-2 bg-brutalCoral inline-block"></span>
+                    ${escapeHtml(g.description)}
+                  </span>
+                  <span class="px-1.5 py-0.2 bg-white border border-black text-[9px] font-mono uppercase">${escapeHtml(g.evidence_status || 'INFERRED')}</span>
+                </div>
+                ${g.derived_from && g.derived_from.length > 0 ? `
+                  <div class="flex items-center gap-1 mt-1 text-[9px] font-mono text-neutral-600">
+                    <span>DERIVED FROM:</span>
+                    ${g.derived_from.map(df => `<span class="bg-white px-1 border border-neutral-400 uppercase">${escapeHtml(df)}</span>`).join('')}
+                  </div>
+                ` : ''}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      // 10. Research Opportunities
+      const opps = data.opportunities || [];
+      const opportunitiesHtml = `
+        <div class="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col gap-2">
+          <div class="flex items-center justify-between border-b border-black pb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="px-2 py-0.5 bg-brutalYellow text-black font-mono font-bold text-[10px] uppercase">SECTION 10</span>
+              <h3 class="font-display font-extrabold text-sm uppercase text-black">Actionable Research Opportunities</h3>
+            </div>
+            <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1.5 py-0.5">${opps.length} OPPORTUNITIES</span>
+          </div>
+          <div class="space-y-3 mt-1">
+            ${opps.map(opp => `
+              <div class="p-3 bg-white border-2 border-black shadow-[2px_2px_0px_#000000] flex flex-col gap-1.5">
+                <div class="flex items-center justify-between gap-2">
+                  <h4 class="font-display font-extrabold text-xs uppercase text-black flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-sm font-bold text-brutalYellow" data-icon="lightbulb">lightbulb</span>
+                    ${escapeHtml(opp.title)}
+                  </h4>
+                </div>
+                <p class="font-sans text-xs text-neutral-800 leading-snug">
+                  ${escapeHtml(opp.description)}
+                </p>
+                ${opp.actionable_steps && opp.actionable_steps.length > 0 ? `
+                  <div class="mt-1 space-y-1 bg-[#FAF8EE] p-2 border border-black text-[11px] font-mono">
+                    <span class="font-bold uppercase tracking-wider block text-[10px] text-neutral-700">ACTIONABLE STEPS:</span>
+                    ${opp.actionable_steps.map(step => `
+                      <div class="flex items-start gap-1.5 text-neutral-900">
+                        <span class="font-bold text-green-700">&bull;</span>
+                        <span>${escapeHtml(step)}</span>
+                      </div>
+                    `).join('')}
+                  </div>
+                ` : ''}
+                ${opp.expected_impact ? `
+                  <div class="text-[11px] font-mono text-neutral-800 mt-0.5">
+                    <strong>Expected Impact:</strong> ${escapeHtml(opp.expected_impact)}
+                  </div>
+                ` : ''}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      // 11. Evidence
+      const evidence = data.evidence || [];
+      const evidenceHtml = `
+        <div class="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-col gap-2">
+          <div class="flex items-center justify-between border-b border-black pb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="px-2 py-0.5 bg-black text-white font-mono font-bold text-[10px] uppercase">SECTION 11</span>
+              <h3 class="font-display font-extrabold text-sm uppercase text-black">Evidence &amp; Provenance Audit Trail</h3>
+            </div>
+            <span class="text-[10px] font-mono font-bold bg-[#FAF8EE] border border-black px-1.5 py-0.5">${evidence.length} CLAIMS</span>
+          </div>
+          <div class="overflow-x-auto mt-1">
+            <table class="w-full text-left text-xs font-mono border-2 border-black">
+              <thead>
+                <tr class="bg-black text-white uppercase text-[10px]">
+                  <th class="p-2 border-r border-white">Claim / Fact</th>
+                  <th class="p-2 border-r border-white w-24">Status</th>
+                  <th class="p-2 border-r border-white w-28">Field</th>
+                  <th class="p-2">Citation</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${evidence.map(ev => {
+                  const evSt = (ev.status || 'INFERRED').toUpperCase();
+                  const evBadgeClass = evSt === 'VERIFIED' ? 'bg-brutalLime text-black' : (evSt === 'UNKNOWN' ? 'bg-neutral-200 text-neutral-800' : 'bg-brutalYellow text-black');
+                  return `
+                    <tr class="border-b border-black hover:bg-cream">
+                      <td class="p-2 border-r border-black font-sans text-[11px] leading-tight">${escapeHtml(ev.claim)}</td>
+                      <td class="p-2 border-r border-black"><span class="px-1.5 py-0.2 border border-black text-[9px] font-bold ${evBadgeClass}">${evSt}</span></td>
+                      <td class="p-2 border-r border-black uppercase text-[10px] text-neutral-600">${escapeHtml(ev.source_field)}</td>
+                      <td class="p-2 text-[10px] text-neutral-700 truncate max-w-[140px]" title="${escapeHtml(ev.citation)}">${escapeHtml(ev.citation)}</td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+
+      bodyEl.innerHTML = `
+        ${summaryHtml}
+        ${problemHtml}
+        ${datasetHtml}
+        ${methodologyHtml}
+        ${modelHtml}
+        ${resultsHtml}
+        ${limitationsHtml}
+        ${mitigationsHtml}
+        ${gapsHtml}
+        ${opportunitiesHtml}
+        ${evidenceHtml}
+      `;
     }
 
     // Click listeners for top nav
@@ -1341,10 +3535,21 @@
         element.classList.remove('bg-white', 'text-black');
         element.classList.add('bg-black', 'text-white');
       }
+      if (currentSearchResults.length > 0 && !isSearching) {
+        executeSearchSubmission();
+      }
     }
 
-    // Production backend API
-    const API_BASE_URL = 'https://resreachmind-backend.onrender.com';
+    // Backend API resolution (local vs production)
+    const isLocalhost = Boolean(
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1' ||
+      window.location.hostname === '' ||
+      window.location.port !== ''
+    );
+    const API_BASE_URL = isLocalhost
+      ? 'http://127.0.0.1:8000'
+      : 'https://resreachmind-backend.onrender.com';
 
     // Search input interactions
     const queryInput = document.getElementById('research-query-input');
@@ -1399,6 +3604,13 @@
       currentSearchQuery = rawVal;
       isSearching = true;
 
+      // Invalidate and reset roadmap & architecture state so every new query dynamically recalculates
+      currentRoadmap = null;
+      currentArchitecture = null;
+      selectedPaperIdsForRoadmap.clear();
+      selectedPaperIdsForArch.clear();
+      roadmapPhaseStatus = {};
+
       // Update UI Elements
       switchTab('tab-research');
       const contentArea = document.getElementById('research-content-area');
@@ -1437,15 +3649,32 @@
 
       const limit = limitSelect ? parseInt(limitSelect.value, 10) || 5 : 5;
 
+      // Extract active filter constraints & optimization toggles
+      const pillOptimize = document.getElementById('pill-optimize');
+      const pillOa = document.getElementById('pill-open-access');
+      const pillCode = document.getElementById('pill-code');
+
+      const shouldOptimize = pillOptimize ? pillOptimize.getAttribute('data-active') === 'true' : true;
+      const requireOa = pillOa ? pillOa.getAttribute('data-active') === 'true' : false;
+      const requireCode = pillCode ? pillCode.getAttribute('data-active') === 'true' : false;
+
+      const constraints = {};
+      if (requireOa) constraints.require_open_access = true;
+      if (requireCode) constraints.require_code = true;
+
       const requestPayload = {
         query: currentSearchQuery,
         limit: limit,
+        top_k: limit,
         sources: sources,
-        optimize: true
+        optimize: shouldOptimize,
+        verification: true,
+        constraints: Object.keys(constraints).length > 0 ? constraints : undefined,
+        feedback: activeFeedback.length > 0 ? activeFeedback : undefined
       };
 
       try {
-        // Send request directly to the production backend
+        // Send request directly to the backend
         const response = await fetch(`${API_BASE_URL}/api/v1/search`, {
           method: 'POST',
           headers: {
@@ -1459,6 +3688,7 @@
         }
 
         const data = await response.json();
+        optimizationMetadata = data.optimization || null;
 
         // Extract results and candidates
         const candidateList = data.optimization_result?.ranked_candidates || data.candidates || [];
@@ -1468,13 +3698,20 @@
           const matchingCand = candidateList.find(c => c.document?.internal_id === doc.internal_id) || candidateList[idx];
           return {
             ...doc,
-            features: matchingCand?.features || {},
+            features: matchingCand?.features || doc.features || {},
             metadata: matchingCand?.metadata || {},
             rerank_metadata: matchingCand?.rerank_metadata || {}
           };
         });
 
         selectedPaperIndex = 0;
+        if (currentSearchResults.length > 0) {
+          const firstDocId = currentSearchResults[0].internal_id || currentSearchResults[0].paper_id;
+          if (firstDocId) {
+            selectedPaperIdsForRoadmap.add(firstDocId);
+            selectedPaperIdsForArch.add(firstDocId);
+          }
+        }
 
         // Update counters
         if (counterBadge) {
@@ -1490,9 +3727,11 @@
         // Render Active & Result Cards
         renderSearchResults(currentSearchResults);
 
-        // Update Knowledge Graph Seed
-        const graphSeed = document.getElementById('graph-core-title');
-        if (graphSeed) graphSeed.textContent = currentSearchQuery.toUpperCase();
+        // Update Knowledge Graph from Search Results
+        currentKnowledgeGraph = data.knowledge_graph || null;
+        if (currentKnowledgeGraph) {
+          renderKnowledgeGraph(currentKnowledgeGraph);
+        }
 
       } catch (err) {
         console.error('Search error:', err);
@@ -1561,6 +3800,50 @@
 
       contentArea.innerHTML = '';
 
+      // Optimization & Verification Status Banner
+      if (optimizationMetadata) {
+        const optBar = document.createElement('div');
+        optBar.className = 'p-3.5 bg-white border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-wrap items-center justify-between gap-2.5';
+        const stLabel = optimizationMetadata.status ? optimizationMetadata.status.toUpperCase().replace(/_/g, ' ') : 'GLOBALLY OPTIMIZED';
+        const stBadgeBg = (optimizationMetadata.status === 'exact_verified') ? 'bg-brutalLime' : (optimizationMetadata.status === 'approximate_optimized' ? 'bg-brutalYellow' : 'bg-brutalCyan');
+        optBar.innerHTML = `
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 ${stBadgeBg} border-2 border-black font-mono font-bold text-xs">
+              ${escapeHtml(stLabel)}
+            </span>
+            <span class="font-mono text-xs text-neutral-800">
+              SOLVER: <strong>${escapeHtml(optimizationMetadata.method || 'linear_assignment')}</strong> • GAP: <strong>${(optimizationMetadata.optimality_gap || 0).toFixed(4)}</strong>
+            </span>
+          </div>
+          <div class="font-mono text-[11px] text-neutral-600 truncate max-w-md" title="${escapeHtml(optimizationMetadata.guarantee_scope || '')}">
+            "${escapeHtml(optimizationMetadata.guarantee_scope || 'Globally optimal with respect to the retrieved candidate set D and the defined utility function U.')}"
+          </div>
+        `;
+        contentArea.appendChild(optBar);
+      }
+
+      // Multi-Paper Architecture Staging Strip
+      if (selectedPaperIdsForArch.size > 0) {
+        const archStagingBar = document.createElement('div');
+        archStagingBar.className = 'p-3 bg-brutalYellow border-2 border-black shadow-[3px_3px_0px_#000000] flex flex-wrap items-center justify-between gap-3';
+        archStagingBar.innerHTML = `
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 bg-black text-white font-mono font-bold text-xs uppercase">${selectedPaperIdsForArch.size} PAPERS STAGED</span>
+            <span class="font-display font-extrabold text-sm uppercase">Selected for Technical Implementation Architecture</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="brutal-btn px-4 py-1.5 bg-black text-white hover:bg-white hover:text-black font-display font-extrabold text-xs uppercase flex items-center gap-1.5" onclick="reSynthesizeArchitecture(); switchTab('tab-architecture');">
+              <span class="material-symbols-outlined text-sm font-bold" data-icon="bolt">bolt</span>
+              <span>SYNTHESIZE ARCHITECTURE &rarr;</span>
+            </button>
+            <button class="brutal-btn px-2.5 py-1.5 bg-white font-mono font-bold text-xs uppercase" onclick="clearSelectedPapersForArch()">
+              CLEAR
+            </button>
+          </div>
+        `;
+        contentArea.appendChild(archStagingBar);
+      }
+
       results.forEach((paper, idx) => {
         const isSelected = (idx === selectedPaperIndex);
         const cardEl = document.createElement('div');
@@ -1574,6 +3857,12 @@
         const citationsCount = (paper.citation_count !== undefined && paper.citation_count !== null) ? paper.citation_count : 0;
         const saved = isPaperSaved(paper);
 
+        const docId = paper.internal_id || paper.paper_id;
+        const isArchSelected = selectedPaperIdsForArch.has(docId);
+        const activeItem = activeFeedback.find(f => f.document_id === docId);
+        const isUp = activeItem && activeItem.feedback_type === 'relevant';
+        const isDown = activeItem && activeItem.feedback_type === 'not_relevant';
+
         cardEl.innerHTML = `
         <div class="flex items-start justify-between gap-4">
           <div class="flex-1">
@@ -1585,6 +3874,10 @@
               <span class="px-2 py-0.5 bg-[#FAF8EE] border-2 border-black text-black font-mono font-bold text-xs cursor-pointer hover:bg-brutalLime" onclick="selectActivePaper(${idx})">
                 RANK #${idx + 1}
               </span>`}
+              <button class="px-2 py-0.5 border-2 border-black font-mono font-bold text-xs transition-all flex items-center gap-1 ${isArchSelected ? 'bg-black text-white shadow-[2px_2px_0px_#000000]' : 'bg-white text-black hover:bg-brutalYellow shadow-[1px_1px_0px_#000000]'}" onclick="toggleSelectPaperForArchitecture('${escapeHtml(docId)}')">
+                <span class="material-symbols-outlined text-xs">${isArchSelected ? 'check_box' : 'check_box_outline_blank'}</span>
+                <span>ARCH SELECT</span>
+              </button>
               <span class="px-2 py-0.5 bg-brutalCyan border-2 border-black font-mono font-bold text-xs text-black uppercase">
                 ${escapeHtml(formatSource(paper.source))}
               </span>
@@ -1662,17 +3955,33 @@
         <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t-2 border-black">
           <div class="flex items-center gap-2">
             <div class="flex items-center border-2 border-black bg-white shadow-[2px_2px_0px_#000000]">
-              <button class="px-3 py-1 font-mono font-bold text-xs bg-brutalLime text-black flex items-center gap-1 border-r-2 border-black" onclick="toggleFeedbackCard(this, 'up')">
+              <button class="px-3 py-1 font-mono font-bold text-xs ${isUp ? 'bg-brutalLime text-black font-extrabold' : 'bg-white text-black hover:bg-brutalLime'} flex items-center gap-1 border-r-2 border-black transition-colors" onclick="toggleFeedbackCard(this, 'up', ${idx})">
                 <span class="material-symbols-outlined text-sm font-bold" data-icon="thumb_up">thumb_up</span>
-                <span>RELEVANT</span>
+                <span>${isUp ? 'RELEVANT ✓' : 'RELEVANT'}</span>
               </button>
-              <button class="px-3 py-1 font-mono font-bold text-xs bg-white text-black hover:bg-brutalCoral flex items-center gap-1" onclick="toggleFeedbackCard(this, 'down')">
+              <button class="px-3 py-1 font-mono font-bold text-xs ${isDown ? 'bg-brutalCoral text-white font-extrabold' : 'bg-white text-black hover:bg-brutalCoral'} flex items-center gap-1 transition-colors" onclick="toggleFeedbackCard(this, 'down', ${idx})">
                 <span class="material-symbols-outlined text-sm font-bold" data-icon="thumb_down">thumb_down</span>
-                <span>DISMISS</span>
+                <span>${isDown ? 'DISMISSED ✗' : 'DISMISS'}</span>
               </button>
             </div>
           </div>
           <div class="flex items-center gap-2">
+            <button class="brutal-btn px-3 py-1.5 bg-brutalYellow font-display font-extrabold text-xs uppercase flex items-center gap-1 hover:bg-black hover:text-white" onclick="synthesizeArchitectureForPaper(${idx})" title="Generate Concrete Research Architecture for this paper">
+              <span class="material-symbols-outlined text-sm font-bold" data-icon="schema">schema</span>
+              <span>ARCHITECTURE</span>
+            </button>
+            <button class="brutal-btn px-3 py-1.5 bg-brutalLime font-display font-extrabold text-xs uppercase flex items-center gap-1 hover:bg-black hover:text-white" onclick="synthesizeRoadmapForPaper(${idx})" title="Generate Actionable 8-Phase Implementation Roadmap for this paper">
+              <span class="material-symbols-outlined text-sm font-bold" data-icon="route">route</span>
+              <span>ROADMAP</span>
+            </button>
+            <button class="brutal-btn px-3 py-1.5 bg-brutalCyan font-display font-extrabold text-xs uppercase flex items-center gap-1 hover:bg-black hover:text-white" onclick="analyzeGapsForPaper(${idx})" title="Analyze Potential Research Gaps &amp; Opportunities for this paper">
+              <span class="material-symbols-outlined text-sm font-bold" data-icon="travel_explore">travel_explore</span>
+              <span>GAPS</span>
+            </button>
+            <button class="brutal-btn px-3 py-1.5 bg-brutalPink font-display font-extrabold text-xs uppercase flex items-center gap-1 hover:bg-black hover:text-white" onclick="openPaperIntelligence(${idx})" title="Comprehensive Evidence-Grounded Paper Intelligence &amp; Critique">
+              <span class="material-symbols-outlined text-sm font-bold" data-icon="psychology">psychology</span>
+              <span>PAPER INTELLIGENCE</span>
+            </button>
             <button class="brutal-btn px-3 py-1.5 bg-[#FAF8EE] font-mono font-bold text-xs uppercase" onclick="selectActivePaper(${idx}); openRankingModal(${idx});">
               RANKING EXPLANATION
             </button>
@@ -1895,22 +4204,36 @@
       }
     }
 
-    // Feedback Toggle
-    function toggleFeedbackCard(btn, type) {
-      const parent = btn.parentElement;
-      if (!parent) return;
-      const buttons = parent.querySelectorAll('button');
-      if (type === 'up') {
-        buttons[0].classList.add('bg-brutalLime');
-        buttons[0].classList.remove('bg-white');
-        buttons[1].classList.add('bg-white');
-        buttons[1].classList.remove('bg-brutalCoral');
+    // Feedback Toggle & Re-ranking Trigger
+    async function toggleFeedbackCard(btn, type, idx) {
+      if (idx === undefined || idx < 0 || idx >= currentSearchResults.length) return;
+      const paper = currentSearchResults[idx];
+      const docId = paper.internal_id || paper.paper_id;
+      if (!docId) return;
+
+      const targetType = (type === 'up') ? 'relevant' : 'not_relevant';
+      const existingIdx = activeFeedback.findIndex(f => f.document_id === docId);
+
+      if (existingIdx >= 0) {
+        if (activeFeedback[existingIdx].feedback_type === targetType) {
+          // Toggle off
+          activeFeedback.splice(existingIdx, 1);
+        } else {
+          activeFeedback[existingIdx].feedback_type = targetType;
+        }
       } else {
-        buttons[1].classList.add('bg-brutalCoral');
-        buttons[1].classList.remove('bg-white');
-        buttons[0].classList.add('bg-white');
-        buttons[0].classList.remove('bg-brutalLime');
+        activeFeedback.push({
+          document_id: docId,
+          feedback_type: targetType,
+          weight: 1.0
+        });
       }
+
+      const counterBadge = document.getElementById('search-results-counter');
+      if (counterBadge) counterBadge.textContent = 'FEEDBACK RECORDED — RE-RANKING...';
+
+      // Re-execute search to produce new ranking influenced by user feedback
+      await executeSearchSubmission();
     }
 
     // Bookmark Toggle
@@ -2071,29 +4394,41 @@
 
       if (qVec) qVec.textContent = `QUERY VECTOR: "${currentSearchQuery || 'Active Query'}"`;
       if (mScore) {
-        const ce = paper.features?.cross_encoder_score !== undefined ? paper.features.cross_encoder_score.toFixed(3) : '0.950';
+        const ce = (paper.relevance_score !== undefined && paper.relevance_score !== null)
+          ? (paper.relevance_score).toFixed(3)
+          : (paper.features?.cross_encoder_score !== undefined ? paper.features.cross_encoder_score.toFixed(3) : '0.000');
         mScore.textContent = `MATCH: ${ce} CrossEncoder`;
       }
 
       if (util) util.textContent = getUtilityScore(paper);
       if (rel) rel.textContent = getRelevanceScore(paper);
       if (pref) {
-        pref.textContent = paper.features?.preference_match !== undefined ? (paper.features.preference_match * 100).toFixed(1) + '%' : '92.4%';
+        const prefVal = paper.preference_contribution !== undefined
+          ? paper.preference_contribution
+          : (paper.features?.preference_match !== undefined ? (paper.features.preference_match * 0.20) : 0.0);
+        pref.textContent = (prefVal >= 0 ? '+' : '') + (prefVal * 100).toFixed(1) + '%';
       }
       if (fdbk) {
-        fdbk.textContent = paper.features?.feedback_match !== undefined ? '+' + (paper.features.feedback_match * 20).toFixed(1) : '+14.2';
+        const fdbkVal = paper.feedback_contribution !== undefined
+          ? paper.feedback_contribution
+          : (paper.features?.feedback_match !== undefined ? (paper.features.feedback_match * 0.15) : 0.0);
+        fdbk.textContent = (fdbkVal >= 0 ? '+' : '') + (fdbkVal * 100).toFixed(1);
       }
       if (build) build.textContent = getBuildabilityScore(paper) + '/100';
       if (srcQ) {
-        srcQ.textContent = paper.features?.source_quality !== undefined ? (paper.features.source_quality * 100).toFixed(1) : '85.0';
+        const sq = paper.features?.source_quality !== undefined ? (paper.features.source_quality * 100).toFixed(1) + '%' : '0.0%';
+        srcQ.textContent = sq;
       }
 
       if (reason) {
-        const utilVal = getUtilityScore(paper);
-        const relVal = getRelevanceScore(paper);
-        const citVal = (paper.citation_count || 0).toLocaleString();
-        const srcName = formatSource(paper.source);
-        reason.textContent = `Retrieved from ${srcName} with ${citVal} citation signals. Evaluated through Phase 4 hybrid fusion, Cross-Encoder deep reranking (Relevance: ${relVal}), and HiGHS global optimizer achieving Composite Utility ${utilVal}/100.`;
+        if (paper.explanation) {
+          reason.textContent = paper.explanation;
+        } else {
+          const utilVal = getUtilityScore(paper);
+          const relVal = getRelevanceScore(paper);
+          const bldVal = getBuildabilityScore(paper);
+          reason.textContent = `Paper ranked #${(paper.rank || selectedPaperIndex + 1)} with utility ${utilVal}/100 based on evaluated relevance (${relVal}) and verified buildability score (${bldVal}/100) under multi-criteria utility U(R).`;
+        }
       }
     }
 
